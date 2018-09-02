@@ -10,11 +10,7 @@ const withSubmitHandler = ({ submitProp }) => Component =>
 		)
 
 		render() {
-			return (
-				<form onSubmit={this.handleSubmit}>
-					<Component />
-				</form>
-			)
+			return <Component handleSubmit={this.handleSubmit} {...this.props} />
 		}
 	}
 

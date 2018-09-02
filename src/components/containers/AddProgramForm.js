@@ -1,17 +1,19 @@
-import React, { Fragment } from "react"
+import React from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
 
 import { ProgramActions } from "../../redux/ducks/Program"
 import { withSubmitHandler } from "../enhancers"
 
-const AddProgramForm = withSubmitHandler({ submitProp: "addProgram" })(() => (
-	<Fragment>
-		<label htmlFor="name">Name</label>
-		<input type="text" name="name" />
-		<button type="submit">Add</button>
-	</Fragment>
-))
+const AddProgramForm = withSubmitHandler({ submitProp: "addProgram" })(
+	({ handleSubmit }) => (
+		<form onSubmit={handleSubmit}>
+			<label htmlFor="name">Name</label>
+			<input type="text" name="name" />
+			<button type="submit">Add</button>
+		</form>
+	)
+)
 
 AddProgramForm.propTypes = {
 	addProgram: P.func.isRequired
