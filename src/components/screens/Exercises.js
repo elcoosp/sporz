@@ -1,7 +1,11 @@
 import React from "react"
-
+import { AddExerciseForm } from "../containers"
 const Exercises = () => {
-	return <div>Exo</div>
+	return (
+		<div>
+			<AddExerciseForm />
+		</div>
+	)
 }
 
 export default Exercises

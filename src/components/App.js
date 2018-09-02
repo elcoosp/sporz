@@ -11,8 +11,8 @@ const App = () => {
 			<Fragment>
 				<Header />
 				<Route exact path={Routes.home.path} component={Home} />
-				<Route path={Routes.exercises.path} component={Programs} />
-				<Route path={Routes.programs.path} component={Exercises} />
+				<Route path={Routes.exercises.path} component={Exercises} />
+				<Route path={Routes.programs.path} component={Programs} />
 			</Fragment>
 		</Router>
 	)
