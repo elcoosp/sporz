@@ -1,10 +1,13 @@
 import React, { Fragment } from "react"
-import { AddProgramForm, ProgramsList } from "../containers"
+import { AddProgramForm, ProgramsList, ProgramItem } from "../containers"
+import { Route } from "react-router-dom"
+import { Routes } from "../../constants"
 
 const Programs = () => (
 	<Fragment>
 		<AddProgramForm />
-		<ProgramsList />
+		<Route exact path={Routes.programs.path} component={ProgramsList} />
+		<Route path={`${Routes.programs.path}/:id`} component={ProgramItem} />
 	</Fragment>
 )
 
