@@ -1,11 +1,11 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { AddExerciseForm, ExercisesList } from "../containers"
 const Exercises = () => {
 	return (
-		<div>
+		<Fragment>
 			<AddExerciseForm />
 			<ExercisesList />
-		</div>
+		</Fragment>
 	)
 }
 

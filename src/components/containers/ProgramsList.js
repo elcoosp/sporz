@@ -2,19 +2,19 @@ import React from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
 
-import { ExerciseActions, ExerciseSelectors } from "../../redux/ducks/Exercise"
+import { ProgramActions, ProgramSelectors } from "../../redux/ducks/Program"
 
-const ExercisesList = ({ exercices, removeExercise }) => {
+const ProgramsList = ({ programs, removeProgram }) => {
 	return (
 		<ul>
-			{exercices.map(({ id, name }) => (
+			{programs.map(({ id, name }) => (
 				<li key={id}>
 					<h1>
 						{name}{" "}
 						<span
 							role="img"
-							aria-label="Remove exercise"
-							onClick={() => removeExercise({ id })}
+							aria-label="Remove program"
+							onClick={() => removeProgram({ id })}
 						>
 							❌
 						</span>
@@ -25,8 +25,8 @@ const ExercisesList = ({ exercices, removeExercise }) => {
 	)
 }
 
-ExercisesList.propTypes = {
-	exercices: P.arrayOf(
+ProgramsList.propTypes = {
+	programs: P.arrayOf(
 		P.shape({
 			id: P.string.isRequired,
 			name: P.string.isRequired
@@ -35,14 +35,14 @@ ExercisesList.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	exercices: ExerciseSelectors.getAll(state)
+	programs: ProgramSelectors.getAll(state)
 })
 
 const mapDispatchToProps = dispatch => ({
-	removeExercise: e => dispatch(ExerciseActions.remove(e))
+	removeProgram: e => dispatch(ProgramActions.remove(e))
 })
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(ExercisesList)
+)(ProgramsList)

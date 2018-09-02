@@ -1,7 +1,5 @@
-const getAllPrograms = state => state
-const getProgramById = state => state
+import { getAllByKey } from "../../selector-utils"
 
 export default {
-	getAllPrograms,
-	getProgramById
+	getAll: getAllByKey("programs")
 }

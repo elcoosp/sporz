@@ -1,7 +1,5 @@
-const getAllByKey = key => state => Object.values(state[key].byId)
-const getExerciseById = state => state
+import { getAllByKey } from "../../selector-utils"
 
 export default {
-	getAll: getAllByKey("exercises"),
-	getExerciseById
+	getAll: getAllByKey("exercises")
 }

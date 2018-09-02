@@ -1,7 +1,11 @@
-import React from "react"
+import React, { Fragment } from "react"
+import { AddProgramForm, ProgramsList } from "../containers"
 
-const Programs = () => {
-	return <div>Programs</div>
-}
+const Programs = () => (
+	<Fragment>
+		<AddProgramForm />
+		<ProgramsList />
+	</Fragment>
+)
 
 export default Programs
