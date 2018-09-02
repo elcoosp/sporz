@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { Routes } from "../../constants"
 
-import { ProgramActions, ProgramSelectors } from "../../redux/ducks/Program"
+import { ProgramSelectors } from "../../redux/ducks/Program"
 
 const ProgramsList = ({ programs }) => {
 	return (

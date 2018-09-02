@@ -1,23 +1,18 @@
 import React from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
+import { Routes } from "../../constants"
 
-import { ExerciseActions, ExerciseSelectors } from "../../redux/ducks/Exercise"
+import { ExerciseSelectors } from "../../redux/ducks/Exercise"
 
-const ExercisesList = ({ exercices, removeExercise }) => {
+const ExercisesList = ({ exercises }) => {
 	return (
 		<ul>
-			{exercices.map(({ id, name }) => (
+			{exercises.map(({ id, name }) => (
 				<li key={id}>
 					<h1>
-						{name}{" "}
-						<span
-							role="img"
-							aria-label="Remove exercise"
-							onClick={() => removeExercise({ id })}
-						>
-							❌
-						</span>
+						<Link to={Routes.exercises.path + "/" + id}>{name}</Link>
 					</h1>
 				</li>
 			))}
@@ -26,7 +21,7 @@ const ExercisesList = ({ exercices, removeExercise }) => {
 }
 
 ExercisesList.propTypes = {
-	exercices: P.arrayOf(
+	exercises: P.arrayOf(
 		P.shape({
 			id: P.string.isRequired,
 			name: P.string.isRequired
@@ -35,12 +30,10 @@ ExercisesList.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	exercices: ExerciseSelectors.getAll(state)
+	exercises: ExerciseSelectors.getAll(state)
 })
 
-const mapDispatchToProps = dispatch => ({
-	removeExercise: e => dispatch(ExerciseActions.remove(e))
-})
+const mapDispatchToProps = dispatch => ({})
 
 export default connect(
 	mapStateToProps,
