@@ -1,30 +1,20 @@
-import React, { Component } from "react"
+import React, { Fragment } from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
 
-import { pipe, prevDefault, formFromEvent } from "../../utils"
 import { ExerciseActions } from "../../redux/ducks/Exercise"
+import { withSubmitHandler } from "../enhancers"
 
-export class AddExerciseForm extends Component {
-	static propTypes = {
-		addExercise: P.func.isRequired
-	}
+const AddExerciseForm = withSubmitHandler({ submitProp: "addExercise" })(() => (
+	<Fragment>
+		<label htmlFor="name">Name</label>
+		<input type="text" name="name" />
+		<button type="submit">Add</button>
+	</Fragment>
+))
 
-	handleSubmit = pipe(
-		prevDefault,
-		formFromEvent,
-		this.props.addExercise
-	)
-
-	render() {
-		return (
-			<form onSubmit={this.handleSubmit}>
-				<label htmlFor="name">Name</label>
-				<input type="text" name="name" />
-				<button type="Sudmit">Add</button>
-			</form>
-		)
-	}
+AddExerciseForm.propTypes = {
+	addExercise: P.func.isRequired
 }
 
 const mapStateToProps = state => ({})

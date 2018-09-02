@@ -1,7 +1,7 @@
-const getAllExercises = state => state
+const getAllByKey = key => state => Object.values(state[key].byId)
 const getExerciseById = state => state
 
 export default {
-	getAllExercises,
+	getAll: getAllByKey("exercises"),
 	getExerciseById
 }

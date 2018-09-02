@@ -1,9 +1,10 @@
 import React from "react"
-import { AddExerciseForm } from "../containers"
+import { AddExerciseForm, ExercisesList } from "../containers"
 const Exercises = () => {
 	return (
 		<div>
 			<AddExerciseForm />
+			<ExercisesList />
 		</div>
 	)
 }
