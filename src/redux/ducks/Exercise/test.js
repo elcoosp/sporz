@@ -1,5 +1,6 @@
 import reducer from "./reducers"
 import actions from "./actions"
+import { ProgramActions } from "../Program"
 
 const makeInitialState = ({ byId = {}, allIds = [] } = {}) => ({
 	byId,
@@ -19,7 +20,8 @@ describe("Exercise reducer", () => {
 			byId: {
 				[addExercise.payload.id]: {
 					name: "Crunch",
-					id: addExercise.payload.id
+					id: addExercise.payload.id,
+					programsById: []
 				}
 			},
 			allIds: [addExercise.payload.id]
@@ -75,6 +77,36 @@ describe("Exercise reducer", () => {
 				a: {
 					name: "Cobra",
 					id: "a"
+				}
+			},
+			allIds: ["a"]
+		})
+	})
+
+	test("should add a program id in the programs to which an exercise is related", () => {
+		const addProgramToExercise = ProgramActions.addExercise({
+			id: "programId",
+			exerciseId: "a"
+		})
+		const initialState = {
+			byId: {
+				a: {
+					name: "Crunch",
+					id: "a",
+					programsById: []
+				}
+			},
+			allIds: ["a"]
+		}
+
+		const result = reducer(initialState, addProgramToExercise)
+
+		expect(result).toEqual({
+			byId: {
+				a: {
+					name: "Crunch",
+					id: "a",
+					programsById: ["programId"]
 				}
 			},
 			allIds: ["a"]
