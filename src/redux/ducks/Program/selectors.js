@@ -1,5 +1,6 @@
-import { getAllByKey } from "../../selector-utils"
+import { makeGetAll, makeGetById } from "../../selector-utils"
 
 export default {
-	getAll: getAllByKey("programs")
+	getAll: makeGetAll("programs"),
+	getById: makeGetById("programs")
 }
