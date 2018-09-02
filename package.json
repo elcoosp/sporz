@@ -17,6 +17,7 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
-		"duck": "node '/Users/elcoosp/Documents/Dev/experiments/re-ducks-maker' --duckName=Exercise --types=ADD_EXERCISE,DELETE_EXERCISE,UPDATE_EXERCISE --selectors=getAllExercises,getExerciseById --ducksPath=src/ducks"
-	}
+		"duck": "node '/Users/elcoosp/Documents/Dev/experiments/re-ducks-maker' --duckName=Program --types=ADD,REMOVE,UPDATE --selectors=getAllPrograms,getProgramById --ducksPath=src/redux/ducks"
+	},
+	"devDependencies": {}
 }
