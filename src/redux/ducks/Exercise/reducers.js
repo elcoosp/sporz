@@ -1,5 +1,6 @@
 // import { combineReducers } from "redux"
 import T from "./types"
+import { ProgramTypes } from "../Program"
 import normalized from "../../normalized"
 const ExerciseReducer = (
 	state = {
@@ -9,6 +10,15 @@ const ExerciseReducer = (
 	{ type, payload } = {}
 ) => {
 	switch (type) {
+		case ProgramTypes.ADD_EXERCISE:
+			return normalized.update(
+				state,
+				payload,
+				({ programsById: p }) => ({
+					programsById: p.concat(payload.id)
+				}),
+				"exerciseId"
+			)
 		case T.ADD:
 			return normalized.add(state, payload)
 

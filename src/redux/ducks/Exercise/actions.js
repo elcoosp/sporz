@@ -1,10 +1,12 @@
 import types from "./types"
 import cuid from "cuid"
-const add = ({ name }) => ({
+
+const add = ({ name = "", programsById = [] }) => ({
 	type: types.ADD,
 	payload: {
 		id: cuid(),
-		name
+		name,
+		programsById
 	}
 })
 
@@ -13,7 +15,7 @@ const remove = ({ id }) => ({
 	payload: { id }
 })
 
-const update = ({ name, id }) => ({
+const update = ({ name = "", id }) => ({
 	type: types.UPDATE,
 	payload: {
 		name,
