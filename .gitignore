@@ -22,3 +22,6 @@ yarn-error.log*
 
 # Ideas
 idea/
+
+# Utility scripts
+scripts/
