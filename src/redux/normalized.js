@@ -8,10 +8,21 @@ const normalized = {
 		const allIds = state.allIds.filter(x => x !== id)
 		return { byId, allIds }
 	},
-	update: (state, payload) => ({
+	update: (
+		state,
+		payload,
+		updater = previousPayload => payload,
+		// The id to grab from the payload for updating
+		idRef = "id",
+		// A ref to the previous data
+		previousUpdatedData = state.byId[payload[idRef]]
+	) => ({
 		byId: {
 			...state.byId,
-			[payload.id]: { ...state.byId[payload.id], ...payload }
+			[previousUpdatedData.id]: {
+				...previousUpdatedData,
+				...updater(previousUpdatedData)
+			}
 		},
 		allIds: state.allIds
 	})
