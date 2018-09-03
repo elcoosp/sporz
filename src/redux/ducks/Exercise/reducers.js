@@ -18,6 +18,13 @@ const ExerciseReducer = (
 				}),
 				"exerciseId"
 			)
+		case ProgramTypes.REMOVE:
+			return normalized.removeRefs(
+				state,
+				payload,
+				"exercisesById",
+				"programsById"
+			)
 		case T.ADD:
 			return normalized.add(state, payload)
 

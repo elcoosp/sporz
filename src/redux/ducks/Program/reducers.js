@@ -23,11 +23,12 @@ const ProgramReducer = (
 			}))
 
 		case ExerciseTypes.REMOVE:
-			return normalized.updateRefs(state, payload, "programsById", entity => ({
-				exercisesById: entity.exercisesById.filter(
-					exoId => exoId !== payload.id
-				)
-			}))
+			return normalized.removeRefs(
+				state,
+				payload,
+				"programsById",
+				"exercisesById"
+			)
 
 		default:
 			return state

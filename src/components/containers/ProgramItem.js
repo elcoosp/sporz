@@ -22,7 +22,14 @@ const ProgramItem = withRedirectIfNoProp({
 		<div>
 			<h1>{program.name}</h1>
 
-			<button onClick={() => removeProgram({ id: program.id })}>
+			<button
+				onClick={() =>
+					removeProgram({
+						id: program.id,
+						exercisesById: program.exercisesById
+					})
+				}
+			>
 				Remove{" "}
 				<span role="img" aria-label="Remove program">
 					❌
