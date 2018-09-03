@@ -24,7 +24,7 @@
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"iex": "node scripts/indexExports enhancers screens containers dumbs",
-		"duck": "node '/Users/elcoosp/Documents/Dev/experiments/re-ducks-maker' --duckName=Program --types=ADD,REMOVE,UPDATE --selectors=getAllPrograms,getProgramById --ducksPath=src/redux/ducks"
+		"duck": "node '/Users/elcoosp/Documents/Dev/experiments/re-ducks-maker' --duckName=Record --types=ADD,REMOVE --selectors=all,byId --ducksPath=src/redux/ducks"
 	},
 	"devDependencies": {}
 }
