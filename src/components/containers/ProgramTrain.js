@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 
 import { ProgramSelectors } from "../../redux/ducks/Program"
 import { ExerciseSelectors } from "../../redux/ducks/Exercise"
+import { CountDown } from "../dumbs"
 export class ProgramTrain extends Component {
 	static propTypes = {
 		program: P.shape({
@@ -23,7 +24,17 @@ export class ProgramTrain extends Component {
 	}
 
 	render() {
-		return <div>Yo trianing</div>
+		const {
+			program: { timing }
+		} = this.props
+		return (
+			<div>
+				<h1>Training</h1>
+				<CountDown startCount={timing.perExercise}>
+					{({ count }) => <h2>{count}</h2>}
+				</CountDown>
+			</div>
+		)
 	}
 }
 

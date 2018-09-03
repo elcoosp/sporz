@@ -4,7 +4,7 @@ import cuid from "cuid"
 const add = ({
 	name = "",
 	exercisesById = [],
-	timing = { perBreak: 10000, perExercise: 30000 }
+	timing = { perBreak: 10, perExercise: 30 }
 }) => ({
 	type: types.ADD,
 	payload: {
