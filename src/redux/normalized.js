@@ -25,7 +25,23 @@ const normalized = {
 			}
 		},
 		allIds: state.allIds
-	})
+	}),
+	// Grab a field on the payload corresponding to the id refs of the entity to update.
+	// Get every entity concerned and create the updated ones with the updater function
+	// And glue together the state
+	updateRefs: (state, payload, payloadRefsField, updater) => {
+		const update = payload[payloadRefsField].reduce((acc, id) => {
+			const entity = state.byId[id]
+
+			acc[id] = {
+				...entity,
+				...updater(entity)
+			}
+			return acc
+		}, {})
+
+		return { ...state, byId: { ...state.byId, ...update } }
+	}
 }
 
 export default normalized

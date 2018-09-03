@@ -1,6 +1,6 @@
 import T from "./types"
+import { ExerciseTypes } from "../Exercise"
 import normalized from "../../normalized"
-
 const ProgramReducer = (
 	state = {
 		byId: {},
@@ -21,6 +21,14 @@ const ProgramReducer = (
 			return normalized.update(state, payload, ({ exercisesById: e }) => ({
 				exercisesById: e.concat(payload.exerciseId)
 			}))
+
+		case ExerciseTypes.REMOVE:
+			return normalized.updateRefs(state, payload, "programsById", entity => ({
+				exercisesById: entity.exercisesById.filter(
+					exoId => exoId !== payload.id
+				)
+			}))
+
 		default:
 			return state
 	}

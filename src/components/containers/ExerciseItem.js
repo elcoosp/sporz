@@ -9,11 +9,11 @@ import { ExerciseActions, ExerciseSelectors } from "../../redux/ducks/Exercise"
 const ExerciseItem = withRedirectIfNoProp({
 	prop: "exercise",
 	redirect: Routes.exercises.path
-})(({ exercise, removeExercise }) => (
+})(({ exercise, removeExercise, programsById }) => (
 	<div>
 		<h1>{exercise.name}</h1>
 
-		<button onClick={() => removeExercise({ id: exercise.id })}>
+		<button onClick={() => removeExercise({ id: exercise.id, programsById })}>
 			Remove{" "}
 			<span role="img" aria-label="Remove exercise">
 				❌
@@ -25,7 +25,8 @@ const ExerciseItem = withRedirectIfNoProp({
 ExerciseItem.propTypes = {
 	exercise: P.shape({
 		id: P.string.isRequired,
-		name: P.string.isRequired
+		name: P.string.isRequired,
+		programsById: P.arrayOf(P.string).isRequired
 	}),
 	removeExercise: P.func.isRequired
 }
