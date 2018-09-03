@@ -112,4 +112,29 @@ describe("Exercise reducer", () => {
 			allIds: ["a"]
 		})
 	})
+
+	test("should remove a program id (when the entity is removed) from all exercises that are linked to it", () => {
+		const removeProgram = ProgramActions.remove({
+			id: "prog1",
+			exercisesById: ["a", "b"]
+		})
+		const result = reducer(
+			makeInitialState({
+				byId: {
+					a: { name: "crunch", id: "a", programsById: ["prog1", "prog2"] },
+					b: { name: "Other program", id: "b", programsById: ["prog1"] }
+				},
+				allIds: ["a", "b"]
+			}),
+			removeProgram
+		)
+
+		expect(result).toEqual({
+			byId: {
+				a: { name: "crunch", id: "a", programsById: ["prog2"] },
+				b: { name: "Other program", id: "b", programsById: [] }
+			},
+			allIds: ["a", "b"]
+		})
+	})
 })
