@@ -1,22 +1,27 @@
-import React from "react"
+import React, { Fragment } from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import { Routes } from "../../constants"
 
+import AddProgramForm from "./AddProgramForm"
 import { ProgramSelectors } from "../../redux/ducks/Program"
 
 const ProgramsList = ({ programs }) => {
 	return (
-		<ul>
-			{programs.map(({ id, name }) => (
-				<li key={id}>
-					<h1>
-						<Link to={Routes.programs.path + "/" + id}>{name}</Link>
-					</h1>
-				</li>
-			))}
-		</ul>
+		<Fragment>
+			<AddProgramForm />
+
+			<ul>
+				{programs.map(({ id, name }) => (
+					<li key={id}>
+						<h1>
+							<Link to={Routes.programs.path + "/" + id}>{name}</Link>
+						</h1>
+					</li>
+				))}
+			</ul>
+		</Fragment>
 	)
 }
 
