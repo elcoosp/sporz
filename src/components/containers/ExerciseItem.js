@@ -9,11 +9,11 @@ import { ExerciseActions, ExerciseSelectors } from "../../redux/ducks/Exercise"
 const ExerciseItem = withRedirectIfNoProp({
 	prop: "exercise",
 	redirect: Routes.exercises.path
-})(({ exercise, removeExercise, programsById }) => (
+})(({ exercise: { programsById, id, name }, removeExercise }) => (
 	<div>
-		<h1>{exercise.name}</h1>
+		<h1>{name}</h1>
 
-		<button onClick={() => removeExercise({ id: exercise.id, programsById })}>
+		<button onClick={() => removeExercise({ id, programsById })}>
 			Remove{" "}
 			<span role="img" aria-label="Remove exercise">
 				❌

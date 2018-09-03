@@ -1,6 +1,6 @@
-const ADD = "app/EXERCISE::ADD"
-const REMOVE = "app/EXERCISE::REMOVE"
-const UPDATE = "app/EXERCISE::UPDATE"
+const ADD = "app/Exercise::ADD"
+const REMOVE = "app/Exercise::REMOVE"
+const UPDATE = "app/Exercise::UPDATE"
 
 export default {
 	ADD,

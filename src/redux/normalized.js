@@ -1,7 +1,11 @@
 // Grab a field on the payload corresponding to the id refs of the entity to update.
 // Get every entity concerned and create the updated ones with the updater function
 // And glue together the state
+// 	"exercisesById",
+// "programsById"
 const updateRefs = (state, payload, payloadEntityRefsKey, updater) => {
+	console.log(payload)
+
 	const update = payload[payloadEntityRefsKey].reduce((acc, id) => {
 		const entity = state.byId[id]
 

@@ -21,8 +21,9 @@ const ProgramReducer = (
 			return normalized.update(state, payload, ({ exercisesById: e }) => ({
 				exercisesById: e.concat(payload.exerciseId)
 			}))
-
 		case ExerciseTypes.REMOVE:
+			console.log(payload)
+
 			return normalized.removeRefs(
 				state,
 				payload,
