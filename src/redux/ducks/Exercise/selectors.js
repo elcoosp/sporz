@@ -11,7 +11,21 @@ const getAllNotInProgram = createSelector(
 	(program, exercises) =>
 		exercises.reduce(
 			(acc, e) =>
-				program.exercisesById.includes(e.id) ? acc : (acc.push(e), acc),
+				program && program.exercisesById.includes(e.id)
+					? acc
+					: (acc.push(e), acc),
+			[]
+		)
+)
+const getAllInProgram = createSelector(
+	ProgramSelectors.getById,
+	getAll,
+	(program, exercises) =>
+		exercises.reduce(
+			(acc, e) =>
+				program && program.exercisesById.includes(e.id)
+					? (acc.push(e), acc)
+					: acc,
 			[]
 		)
 )
@@ -19,5 +33,6 @@ const getAllNotInProgram = createSelector(
 export default {
 	getAll,
 	getById,
-	getAllNotInProgram
+	getAllNotInProgram,
+	getAllInProgram
 }
