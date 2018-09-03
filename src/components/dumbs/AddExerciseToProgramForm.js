@@ -1,28 +1,30 @@
 import React from "react"
-import { formFromEvent, prevDefault, pipe } from "../../utils"
-const AddExerciseToProgramForm = ({
-	exercisesNotInProgram,
-	addExerciseToProgram,
-	program
-}) => {
-	return (
-		<form
-			onSubmit={pipe(
-				prevDefault,
-				e => addExerciseToProgram({ ...formFromEvent(e), id: program.id })
-			)}
-		>
-			<select name="exerciseId">
-				{exercisesNotInProgram.map(({ name, id }) => (
-					<option key={id} value={id}>
-						{name}
-					</option>
-				))}
-			</select>
+import { withSubmitHandler } from "../enhancers"
 
-			<button type="submit">Add exercise</button>
-		</form>
-	)
-}
+const AddExerciseToProgramForm = withSubmitHandler({
+	submitProp: (values, props) =>
+		props.addExerciseToProgram({ ...values, id: props.program.id }),
+	validationState: { exerciseId: "" },
+	validator: {
+		exerciseId: value =>
+			value !== undefined ? "" : "Every exercice is in the program"
+	}
+})(({ handleSubmit, errors, handleChange, exercisesNotInProgram }) => (
+	<form onSubmit={handleSubmit} onChange={handleChange}>
+		<select name="exerciseId">
+			{exercisesNotInProgram.map(({ name, id }) => (
+				<option key={id} value={id}>
+					{name}
+				</option>
+			))}
+		</select>
 
+		<button type="submit" disabled={errors.exerciseId ? true : false}>
+			Add exercise
+		</button>
+		{exercisesNotInProgram.length === 0 && (
+			<span>{"Damn, all exercices in a program !"}</span>
+		)}
+	</form>
+))
 export default AddExerciseToProgramForm

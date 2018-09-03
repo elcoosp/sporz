@@ -48,8 +48,8 @@ ProgramItem.propTypes = {
 		name: P.string.isRequired
 	}),
 	removeProgram: P.func.isRequired,
-	exercisesNotInProgram: P.shape({}).isRequired,
-	exercisesInProgram: P.shape({}).isRequired
+	exercisesNotInProgram: P.arrayOf(P.shape({})).isRequired,
+	exercisesInProgram: P.arrayOf(P.shape({})).isRequired
 }
 
 const mapStateToProps = (state, { match: { params } }) => ({

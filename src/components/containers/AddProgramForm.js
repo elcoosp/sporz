@@ -3,17 +3,14 @@ import P from "prop-types"
 import { connect } from "react-redux"
 
 import { ProgramActions } from "../../redux/ducks/Program"
-import { withSubmitHandler } from "../enhancers"
+import { withOneInputForm } from "../enhancers"
 
-const AddProgramForm = withSubmitHandler({ submitProp: "addProgram" })(
-	({ handleSubmit }) => (
-		<form onSubmit={handleSubmit}>
-			<label htmlFor="name">Name</label>
-			<input type="text" name="name" />
-			<button type="submit">Add</button>
-		</form>
-	)
-)
+const AddProgramForm = withOneInputForm({
+	inputName: "name",
+	submitHandlerProp: "addProgram",
+	errorMessage: "I need a program name",
+	buttonLabel: "Add a program"
+})
 
 AddProgramForm.propTypes = {
 	addProgram: P.func.isRequired
