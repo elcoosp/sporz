@@ -1,4 +1,5 @@
 import reducer from "./reducers"
+import { ExerciseActions } from "../Exercise"
 import actions from "./actions"
 
 const makeInitialState = ({ byId = {}, allIds = [] } = {}) => ({
@@ -75,6 +76,31 @@ describe("Program reducer", () => {
 		expect(result).toEqual({
 			byId: { a: { name: "Classic", id: "a", exercisesById: ["exo1"] } },
 			allIds: ["a"]
+		})
+	})
+
+	test("should remove an exercise id (when the entity is removed) from all programs that contain it", () => {
+		const removeExercise = ExerciseActions.remove({
+			id: "exo1",
+			programsById: ["a", "b"]
+		})
+		const result = reducer(
+			makeInitialState({
+				byId: {
+					a: { name: "Classic", id: "a", exercisesById: ["exo1", "exo2"] },
+					b: { name: "Other program", id: "b", exercisesById: ["exo1"] }
+				},
+				allIds: ["a", "b"]
+			}),
+			removeExercise
+		)
+
+		expect(result).toEqual({
+			byId: {
+				a: { name: "Classic", id: "a", exercisesById: ["exo2"] },
+				b: { name: "Other program", id: "b", exercisesById: [] }
+			},
+			allIds: ["a", "b"]
 		})
 	})
 })
