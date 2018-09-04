@@ -6,7 +6,11 @@ import { Routes } from "../../constants"
 const Exercises = () => (
 	<Fragment>
 		<Route exact path={Routes.exercises.path} component={ExercisesList} />
-		<Route path={`${Routes.exercises.path}/:id`} component={ExerciseItem} />
+		<Route
+			exact
+			path={`${Routes.exercises.path}/:id`}
+			component={ExerciseItem}
+		/>
 	</Fragment>
 )
 

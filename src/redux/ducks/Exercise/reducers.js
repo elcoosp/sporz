@@ -1,5 +1,7 @@
 import T from "./types"
 import { ProgramTypes } from "../Program"
+import { RecordTypes } from "../Record"
+
 import normalized from "../../normalized"
 const ExerciseReducer = (
 	state = {
@@ -9,6 +11,15 @@ const ExerciseReducer = (
 	{ type, payload } = {}
 ) => {
 	switch (type) {
+		case RecordTypes.ADD:
+			return normalized.update(
+				state,
+				payload,
+				({ recordsById: r }) => ({
+					recordsById: r.concat(payload.id)
+				}),
+				"exerciseId"
+			)
 		case ProgramTypes.ADD_EXERCISE:
 			return normalized.update(
 				state,

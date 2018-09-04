@@ -4,8 +4,6 @@
 // 	"exercisesById",
 // "programsById"
 const updateRefs = (state, payload, payloadEntityRefsKey, updater) => {
-	console.log(payload)
-
 	const update = payload[payloadEntityRefsKey].reduce((acc, id) => {
 		const entity = state.byId[id]
 

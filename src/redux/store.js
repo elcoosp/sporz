@@ -2,6 +2,7 @@ import { createStore, combineReducers } from "redux"
 import { tryCatchUndef, pipe } from "../utils"
 import exercises from "./ducks/Exercise"
 import programs from "./ducks/Program"
+import records from "./ducks/Record"
 
 const loadState = tryCatchUndef(() => {
 	const state = localStorage.getItem("state")
@@ -18,7 +19,8 @@ const saveState = tryCatchUndef(
 const configureStore = () => {
 	const rootReducer = combineReducers({
 		exercises,
-		programs
+		programs,
+		records
 	})
 
 	const store = createStore(

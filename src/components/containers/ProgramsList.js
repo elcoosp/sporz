@@ -13,14 +13,18 @@ const ProgramsList = ({ programs }) => {
 			<AddProgramForm />
 
 			<ul>
-				{programs.map(({ id, name }) => (
+				{programs.map(({ id, name, exercisesById }) => (
 					<li key={id}>
 						<h1>
 							<Link to={Routes.programs.path + "/" + id}>{name}</Link>
 						</h1>
-						<Link to={Routes.programs.path + "/" + id + "/train"}>
-							Train now
-						</Link>
+						{exercisesById.length > 0 ? (
+							<Link to={Routes.programs.path + "/" + id + "/train"}>
+								Train now
+							</Link>
+						) : (
+							<p>Add exercises to train</p>
+						)}
 					</li>
 				))}
 			</ul>

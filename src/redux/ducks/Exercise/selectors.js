@@ -5,6 +5,17 @@ import { ProgramSelectors } from "../Program"
 
 const getAll = makeGetAll("exercises")
 const getById = makeGetById("exercises")
+const getByIdWithRecords = createSelector(
+	getById,
+	state => state.records,
+	(exercise, records) =>
+		exercise
+			? {
+					...exercise,
+					records: exercise.recordsById.map(id => records.byId[id])
+			  }
+			: undefined
+)
 const getAllNotInProgram = createSelector(
 	ProgramSelectors.getById,
 	getAll,
@@ -34,5 +45,6 @@ export default {
 	getAll,
 	getById,
 	getAllNotInProgram,
-	getAllInProgram
+	getAllInProgram,
+	getByIdWithRecords
 }

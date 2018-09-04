@@ -14,14 +14,14 @@ const ExerciseItem = withRedirectIfNoProp({
 		exercise: { programsById, id, name, recordsById, records },
 		removeExercise
 	}) => {
-		const lastExercise = records[records.length - 1]
+		const lastRecord = records[records.length - 1]
 
 		return (
 			<div>
 				<h1>{name}</h1>
-				{lastExercise && (
+				{lastRecord && (
 					<p>
-						Last record : <TimeAgo date={lastExercise.timestamp} />
+						Last record : <TimeAgo date={lastRecord.timestamp} />
 					</p>
 				)}
 				<button
