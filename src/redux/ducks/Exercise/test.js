@@ -1,6 +1,7 @@
 import reducer from "./reducers"
 import actions from "./actions"
 import { ProgramActions } from "../Program"
+import { RecordActions } from "../Record"
 
 const makeInitialState = ({ byId = {}, allIds = [] } = {}) => ({
 	byId,
@@ -21,7 +22,8 @@ describe("Exercise reducer", () => {
 				[addExercise.payload.id]: {
 					name: "Crunch",
 					id: addExercise.payload.id,
-					programsById: []
+					programsById: [],
+					recordsById: []
 				}
 			},
 			allIds: [addExercise.payload.id]
@@ -93,7 +95,8 @@ describe("Exercise reducer", () => {
 				a: {
 					name: "Crunch",
 					id: "a",
-					programsById: []
+					programsById: [],
+					recordsById: []
 				}
 			},
 			allIds: ["a"]
@@ -106,7 +109,8 @@ describe("Exercise reducer", () => {
 				a: {
 					name: "Crunch",
 					id: "a",
-					programsById: ["programId"]
+					programsById: ["programId"],
+					recordsById: []
 				}
 			},
 			allIds: ["a"]
@@ -121,8 +125,18 @@ describe("Exercise reducer", () => {
 		const result = reducer(
 			makeInitialState({
 				byId: {
-					a: { name: "crunch", id: "a", programsById: ["prog1", "prog2"] },
-					b: { name: "Other program", id: "b", programsById: ["prog1"] }
+					a: {
+						name: "crunch",
+						id: "a",
+						programsById: ["prog1", "prog2"],
+						recordsById: []
+					},
+					b: {
+						name: "Other program",
+						id: "b",
+						programsById: ["prog1"],
+						recordsById: []
+					}
 				},
 				allIds: ["a", "b"]
 			}),
@@ -131,8 +145,42 @@ describe("Exercise reducer", () => {
 
 		expect(result).toEqual({
 			byId: {
-				a: { name: "crunch", id: "a", programsById: ["prog2"] },
-				b: { name: "Other program", id: "b", programsById: [] }
+				a: {
+					name: "crunch",
+					id: "a",
+					programsById: ["prog2"],
+					recordsById: []
+				},
+				b: { name: "Other program", id: "b", programsById: [], recordsById: [] }
+			},
+			allIds: ["a", "b"]
+		})
+	})
+
+	test("should add a record to the recordsById field on the concerned exercise", () => {
+		const addRecord = RecordActions.add({
+			id: "rec1",
+			exerciseId: ["a"]
+		})
+		const result = reducer(
+			makeInitialState({
+				byId: {
+					a: { name: "crunch", id: "a", programsById: [], recordsById: [] },
+					b: {
+						name: "Other program",
+						id: "b",
+						programsById: [],
+						recordsById: []
+					}
+				},
+				allIds: ["a", "b"]
+			}),
+			addRecord
+		)
+		expect(result).toEqual({
+			byId: {
+				a: { name: "crunch", id: "a", programsById: [], recordsById: ["rec1"] },
+				b: { name: "Other program", id: "b", programsById: [], recordsById: [] }
 			},
 			allIds: ["a", "b"]
 		})
