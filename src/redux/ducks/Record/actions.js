@@ -2,10 +2,16 @@ import cuid from "cuid"
 
 import types from "./types"
 
-const add = ({ repetitions = 0, exerciseId }) => ({
+const add = ({
+	id = cuid(),
+	repetitions = 0,
+	exerciseId,
+	timestamp = Date.now()
+}) => ({
 	type: types.ADD,
 	payload: {
-		id: cuid(),
+		id,
+		timestamp,
 		repetitions,
 		exerciseId
 	}
