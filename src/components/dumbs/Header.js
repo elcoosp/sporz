@@ -1,20 +1,46 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import styled from "styled-components"
 import tm from "themmer"
 import { Routes } from "../../constants"
 
 const S = {}
-
+const active = "active"
 S.Header = styled.header`
 	display: flex;
-	background-image: ${tm`gradient.pm`};
+	align-items: center;
+	justify-content: space-around;
+	background-image: ${tm`gradient.sd`};
+	box-shadow: ${tm`shadow.sm`};
 `
+S.MenuItem = styled(NavLink)`
+	text-decoration: none;
+	padding: ${tm`spacing.md`};
+	color: ${tm`color.white`};
+	transition: ${tm`transition.lg`};
+	border-bottom: 5px solid transparent;
+	&:hover {
+		border-bottom: 5px solid ${tm`color.white`};
+	}
+	&.${active} {
+		background-image: ${tm`gradient.pm`};
+		padding-left: ${tm`spacing.xl`};
+		padding-right: ${tm`spacing.xl`};
+		transition: ${tm`transition.lg`};
+	}
+`
+
+const MenuItem = ({ to }) => (
+	<S.MenuItem exact activeClassName={active} to={Routes[to].path}>
+		{Routes[to].label}
+	</S.MenuItem>
+)
+
 const Header = () => (
 	<S.Header>
-		<Link to={Routes.home.path}>{Routes.home.label}</Link>
-		<Link to={Routes.exercises.path}>{Routes.exercises.label}</Link>
-		<Link to={Routes.programs.path}>{Routes.programs.label}</Link>
+		<MenuItem to="home" />
+		<MenuItem to="exercises" />
+		<MenuItem to="programs" />
 	</S.Header>
 )
 

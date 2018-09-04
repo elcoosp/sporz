@@ -36,7 +36,8 @@ const spacing = {
 	sm: "1rem",
 	md: "1.4rem",
 	lg: "2.2rem",
-	xl: "3rem"
+	xl: "3rem",
+	xxl: "4.6rem"
 }
 
 const easing = "ease-in-out"

@@ -3,15 +3,15 @@ import media from "styled-media-query"
 
 const typography = css`
 :root {
-    font-family: 'Avenir Next';
-    font-size: 16px;
+    font-family: 'Montserrat','Avenir Next', sans-serif;
+    font-size: 14px;
 
     ${media.greaterThan("small")`
-      font-size: 18px;
+      font-size: 16px;
     `}
 
     ${media.greaterThan("medium")`
-      font-size: 20px;
+      font-size: 18px;
     `}
 
     ${media.greaterThan("large")`
@@ -19,7 +19,7 @@ const typography = css`
     `}
 
     ${media.greaterThan("huge")`
-      font-size: 24px;
+      font-size: 26px;
     `}
 }
   `
