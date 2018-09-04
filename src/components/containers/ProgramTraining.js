@@ -4,48 +4,7 @@ import { connect } from "react-redux"
 
 import { ProgramSelectors } from "../../redux/ducks/Program"
 import { ExerciseSelectors } from "../../redux/ducks/Exercise"
-import { CountDown } from "../enhancers"
-
-const TrainingTypes = {
-	CONFIGURING: "CONFIGURING", // Choosing between regular or random exercises order
-	ON_BREAK: "ON_BREAK", // Between exercises
-	EXERCISING: "EXERCISING", // Doing some workout, finally !
-	FINISHED: "FINISHED" // The end. Congrats
-}
-
-const TrainingConfiguring = ({ switchScreen }) => (
-	<div>
-		<h1 onClick={switchScreen}>Let's get started</h1>
-	</div>
-)
-const TrainingFinished = () => (
-	<div>
-		<h1>The end. Congrats</h1>
-	</div>
-)
-
-const TrainingExercising = ({ switchScreen, timing: { perExercise } }) => (
-	<CountDown start={2} threshold={0} guard={switchScreen}>
-		{({ count, pause, resume, isPaused }) => {
-			return <h2 onClick={isPaused ? resume : pause}>{count} exercising</h2>
-		}}
-	</CountDown>
-)
-
-const TrainingOnBreak = ({ switchScreen, timing: { perBreak } }) => (
-	<CountDown start={perBreak} threshold={0} guard={switchScreen}>
-		{({ count, pause, resume, isPaused }) => (
-			<h2 onClick={isPaused ? resume : pause}>{count} on break</h2>
-		)}
-	</CountDown>
-)
-
-const Training = {
-	[TrainingTypes.CONFIGURING]: TrainingConfiguring,
-	[TrainingTypes.EXERCISING]: TrainingExercising,
-	[TrainingTypes.ON_BREAK]: TrainingOnBreak,
-	[TrainingTypes.FINISHED]: TrainingFinished
-}
+import Training, { TrainingTypes } from "../dumbs/Training"
 
 export class ProgramTraining extends Component {
 	static propTypes = {
@@ -112,7 +71,7 @@ export class ProgramTraining extends Component {
 		const { program } = this.props
 		const { currentScreen, currentExerciseIndex } = this.state
 		const exercise = this.props.exercises[currentExerciseIndex]
-		console.log(currentExerciseIndex)
+		const previousExercise = this.props.exercises[currentExerciseIndex - 1]
 
 		const Component = Training[currentScreen]
 		return (
@@ -122,6 +81,7 @@ export class ProgramTraining extends Component {
 					switchScreen={this.switchScreen}
 					timing={program.timing}
 					exercise={exercise}
+					previousExercise={previousExercise}
 				/>
 			</section>
 		)
