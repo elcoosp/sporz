@@ -16,6 +16,7 @@
 		"redux": "^4.0.0",
 		"reselect": "^3.0.1",
 		"styled-components": "^3.4.5",
+		"styled-media-query": "^2.0.2",
 		"themmer": "^3.1.4"
 	},
 	"eslintConfig": {
@@ -29,5 +30,11 @@
 		"iex": "node scripts/indexExports enhancers screens containers dumbs",
 		"duck": "node '/Users/elcoosp/Documents/Dev/experiments/re-ducks-maker' --duckName=Record --types=ADD,REMOVE --selectors=all,byId --ducksPath=src/redux/ducks"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		"styled-normalize": "^8.0.0",
+		"stylelint": "^9.5.0",
+		"stylelint-config-recommended": "^2.1.0",
+		"stylelint-config-styled-components": "^0.1.1",
+		"stylelint-processor-styled-components": "^1.3.2"
+	}
 }

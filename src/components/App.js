@@ -3,9 +3,12 @@ import { BrowserRouter as Router, Route } from "react-router-dom"
 import { ThemeProvider } from "styled-components"
 
 import { Routes } from "../constants"
-import theme from "../theme"
+import theme from "../global-style/theme"
 import { Programs, Exercises, Home } from "./screens"
 import { Header } from "./dumbs"
+import injectGlobalStyles from "../global-style"
+
+injectGlobalStyles()
 
 const App = () => {
 	return (

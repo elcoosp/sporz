@@ -13,7 +13,7 @@ const color = {
 const GRADIENT_DIRECTION = "to left bottom"
 
 const makeLinearGradient = color =>
-	`linear-gradient(${GRADIENT_DIRECTION}, ${color}, ${lighten(0.1)(color)})`
+	`linear-gradient(${GRADIENT_DIRECTION}, ${color}, ${lighten(0.3)(color)})`
 
 const gradient = {
 	pm: makeLinearGradient(color.pm),
