@@ -9,7 +9,7 @@ class Transitionner extends React.Component {
 
 	state = {
 		current: this.props.initial,
-		forwardedProps: {} // Some props transmitted via transition to the component of the current state
+		forwardedProps: {}
 	}
 
 	transition = (current, forwardedProps = {}) =>
