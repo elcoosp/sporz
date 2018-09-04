@@ -1,7 +1,7 @@
 import React from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
-
+import TimeAgo from "react-timeago"
 import { Routes } from "../../constants"
 import { withRedirectIfNoProp } from "../enhancers"
 import { ExerciseActions, ExerciseSelectors } from "../../redux/ducks/Exercise"
@@ -9,30 +9,45 @@ import { ExerciseActions, ExerciseSelectors } from "../../redux/ducks/Exercise"
 const ExerciseItem = withRedirectIfNoProp({
 	prop: "exercise",
 	redirect: Routes.exercises.path
-})(({ exercise: { programsById, id, name }, removeExercise }) => (
-	<div>
-		<h1>{name}</h1>
+})(
+	({
+		exercise: { programsById, id, name, recordsById, records },
+		removeExercise
+	}) => {
+		const lastExercise = records[records.length - 1]
 
-		<button onClick={() => removeExercise({ id, programsById })}>
-			Remove{" "}
-			<span role="img" aria-label="Remove exercise">
-				❌
-			</span>
-		</button>
-	</div>
-))
-
+		return (
+			<div>
+				<h1>{name}</h1>
+				{lastExercise && (
+					<p>
+						Last record : <TimeAgo date={lastExercise.timestamp} />
+					</p>
+				)}
+				<button
+					onClick={() => removeExercise({ id, programsById, recordsById })}
+				>
+					Remove{" "}
+					<span role="img" aria-label="Remove exercise">
+						❌
+					</span>
+				</button>
+			</div>
+		)
+	}
+)
 ExerciseItem.propTypes = {
 	exercise: P.shape({
 		id: P.string.isRequired,
 		name: P.string.isRequired,
+		records: P.arrayOf(P.shape({ repetitions: P.number.isRequired })),
 		programsById: P.arrayOf(P.string).isRequired
 	}),
 	removeExercise: P.func.isRequired
 }
 
 const mapStateToProps = (state, { match: { params } }) => ({
-	exercise: ExerciseSelectors.getById(state, params.id)
+	exercise: ExerciseSelectors.getByIdWithRecords(state, params.id)
 })
 
 const mapDispatchToProps = dispatch => ({
