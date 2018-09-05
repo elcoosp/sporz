@@ -6,20 +6,21 @@ import { Routes } from "../../constants"
 
 import AddExerciseForm from "./AddExerciseForm"
 import { ExerciseSelectors } from "../../redux/ducks/Exercise"
+import { Card, CardList } from "../style"
 
 const ExercisesList = ({ exercises }) => {
 	return (
 		<Fragment>
 			<AddExerciseForm />
-			<ul>
+			<CardList>
 				{exercises.map(({ id, name }) => (
-					<li key={id}>
+					<Card key={id}>
 						<h1>
 							<Link to={Routes.exercises.path + "/" + id}>{name}</Link>
 						</h1>
-					</li>
+					</Card>
 				))}
-			</ul>
+			</CardList>
 		</Fragment>
 	)
 }

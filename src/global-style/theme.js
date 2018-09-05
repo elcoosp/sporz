@@ -25,7 +25,7 @@ const gradient = {
 // md: medium
 // lg: large
 // */
-const lowOpacity = transparentize(0.7)
+const lowOpacity = transparentize(0.9)
 const shadow = {
 	sm: `0px 1px 5px ${lowOpacity(color.black)}`,
 	md: `0px 3px 9px ${lowOpacity(color.black)}`,

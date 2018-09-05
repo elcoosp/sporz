@@ -5,7 +5,6 @@ import TimeAgo from "react-timeago"
 import { Routes } from "../../constants"
 import { withRedirectIfNoProp } from "../enhancers"
 import { ExerciseActions, ExerciseSelectors } from "../../redux/ducks/Exercise"
-
 const ExerciseItem = withRedirectIfNoProp({
 	prop: "exercise",
 	redirect: Routes.exercises.path

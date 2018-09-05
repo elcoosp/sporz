@@ -6,15 +6,16 @@ import { Routes } from "../../constants"
 
 import AddProgramForm from "./AddProgramForm"
 import { ProgramSelectors } from "../../redux/ducks/Program"
+import { Card, CardList } from "../style"
 
 const ProgramsList = ({ programs }) => {
 	return (
 		<Fragment>
 			<AddProgramForm />
 
-			<ul>
+			<CardList>
 				{programs.map(({ id, name, exercisesById }) => (
-					<li key={id}>
+					<Card key={id}>
 						<h1>
 							<Link to={Routes.programs.path + "/" + id}>{name}</Link>
 						</h1>
@@ -25,9 +26,9 @@ const ProgramsList = ({ programs }) => {
 						) : (
 							<p>Add exercises to train</p>
 						)}
-					</li>
+					</Card>
 				))}
-			</ul>
+			</CardList>
 		</Fragment>
 	)
 }
