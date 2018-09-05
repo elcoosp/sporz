@@ -6,11 +6,13 @@ const add = ({
 	id = cuid(),
 	repetitions = 0,
 	exerciseId,
-	timestamp = Date.now()
+	timestamp = Date.now(),
+	timing
 }) => ({
 	type: types.ADD,
 	payload: {
 		id,
+		timing,
 		timestamp,
 		repetitions,
 		exerciseId

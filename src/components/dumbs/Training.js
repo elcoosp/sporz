@@ -35,7 +35,7 @@ const Exercising = ({ switchScreen, timing: { perExercise }, exercise }) => (
 // Receive the coming exercise as the exercise prop, and the one which just ended as previousExercise
 const OnBreak = ({
 	switchScreen,
-	timing: { perBreak },
+	timing: { perBreak, perExercise },
 	exercise: nextExercise,
 	previousExercise
 }) => (
@@ -49,7 +49,7 @@ const OnBreak = ({
 				</h2>
 				<h3>{count}</h3>
 				<button onClick={isPaused ? resume : pause}>Pause</button>
-				<AddRecordForm exerciseId={previousExercise.id} />
+				<AddRecordForm exerciseId={previousExercise.id} timing={perExercise} />
 			</section>
 		)}
 	</CountDown>

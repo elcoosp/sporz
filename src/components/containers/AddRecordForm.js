@@ -9,8 +9,7 @@ const AddRecordForm = withOneInputForm({
 	inputValidator: x => parseInt(x, 10) >= 0,
 	submitHandlerProp: ({ repetitions }, props) =>
 		props.addRecord({
-			repetitions: parseInt(repetitions, 10),
-			exerciseId: props.exerciseId
+			repetitions: parseInt(repetitions, 10)
 		}),
 	errorMessage: "I need a repetition count",
 	buttonLabel: "Add a record",
@@ -18,13 +17,15 @@ const AddRecordForm = withOneInputForm({
 })
 
 AddRecordForm.propTypes = {
-	addRecord: P.func.isRequired
+	addRecord: P.func.isRequired,
+	exerciseId: P.string.isRequired,
+	timing: P.number.isRequired
 }
 
 const mapStateToProps = state => ({})
 
-const mapDispatchToProps = (dispatch, { exerciseId }) => ({
-	addRecord: r => dispatch(RecordActions.add({ exerciseId, ...r }))
+const mapDispatchToProps = (dispatch, { exerciseId, timing }) => ({
+	addRecord: r => dispatch(RecordActions.add({ exerciseId, timing, ...r }))
 })
 
 export default connect(
