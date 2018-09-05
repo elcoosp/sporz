@@ -18,9 +18,9 @@ S.MenuItem = styled(NavLink)`
 	padding: ${tm`spacing.md`};
 	color: ${tm`color.white`};
 	transition: ${tm`transition.lg`};
-	border-bottom: 5px solid transparent;
+	border-bottom: 2px solid transparent;
 	&:hover {
-		border-bottom: 5px solid ${tm`color.white`};
+		border-bottom: 2px solid ${tm`color.white`};
 	}
 	&.${active} {
 		background-image: ${tm`gradient.pm`};

@@ -6,6 +6,7 @@ export default () => injectGlobal`
   ${styledNormalize}
   ${typography}
   body {
+    overflow-x: hidden;
     background-color: ${theme.color.white}
   }
 `

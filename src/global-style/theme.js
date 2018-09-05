@@ -32,12 +32,12 @@ const shadow = {
 	lg: `0px 14px 40px ${lowOpacity(color.black)}`
 }
 const spacing = {
-	xs: ".7rem",
+	xs: ".6rem",
 	sm: "1rem",
 	md: "1.4rem",
-	lg: "2.2rem",
-	xl: "3rem",
-	xxl: "4.6rem"
+	lg: "1.8rem",
+	xl: "2.6rem",
+	xxl: "3.2rem"
 }
 
 const easing = "ease-in-out"
