@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 
 import { Routes } from "../../constants"
 import { withRedirectIfNoProp } from "../enhancers"
-import { AddExerciseToProgramForm } from "../dumbs"
+import { AddExerciseToProgramForm, TimingForm } from "../dumbs"
 import { ProgramActions, ProgramSelectors } from "../../redux/ducks/Program"
 import { ExerciseSelectors } from "../../redux/ducks/Exercise"
 
@@ -17,7 +17,8 @@ const ProgramItem = withRedirectIfNoProp({
 		removeProgram,
 		exercisesNotInProgram,
 		exercisesInProgram,
-		addExerciseToProgram
+		addExerciseToProgram,
+		updateTiming
 	}) => (
 		<div>
 			<h1>{program.name}</h1>
@@ -40,6 +41,8 @@ const ProgramItem = withRedirectIfNoProp({
 				addExerciseToProgram={addExerciseToProgram}
 				program={program}
 			/>
+
+			<TimingForm timing={program.timing} updateTiming={updateTiming} />
 			<h2>In the list !</h2>
 			<ul />
 			{exercisesInProgram.map(({ id, name }) => (
@@ -65,8 +68,10 @@ const mapStateToProps = (state, { match: { params } }) => ({
 	exercisesInProgram: ExerciseSelectors.getAllInProgram(state, params.id)
 })
 
-const mapDispatchToProps = dispatch => ({
-	removeProgram: p => dispatch(ProgramActions.remove(p)),
+const mapDispatchToProps = (dispatch, { match }) => ({
+	updateTiming: payload =>
+		dispatch(ProgramActions.update({ id: match.params.id, ...payload })),
+	removeProgram: payload => dispatch(ProgramActions.remove(payload)),
 	addExerciseToProgram: payload => dispatch(ProgramActions.addExercise(payload))
 })
 

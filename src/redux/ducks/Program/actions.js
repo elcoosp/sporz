@@ -20,9 +20,9 @@ const remove = ({ id, exercisesById = [] }) => ({
 	payload: { id, exercisesById }
 })
 
-const update = ({ id, name = "" }) => ({
+const update = ({ id, ...update }) => ({
 	type: types.UPDATE,
-	payload: { name, id }
+	payload: { id, ...update }
 })
 
 const addExercise = ({ id = "", exerciseId = "" }) => ({

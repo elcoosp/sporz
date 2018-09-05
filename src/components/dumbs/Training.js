@@ -21,7 +21,7 @@ const Finished = () => (
 )
 
 const Exercising = ({ switchScreen, timing: { perExercise }, exercise }) => (
-	<CountDown start={2} threshold={0} guard={switchScreen}>
+	<CountDown start={perExercise} threshold={0} guard={switchScreen}>
 		{({ count, pause, resume, isPaused }) => (
 			<section>
 				<h2>{exercise.name}</h2>
