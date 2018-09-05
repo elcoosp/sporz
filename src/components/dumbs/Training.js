@@ -1,7 +1,11 @@
-import React from "react"
+import React, { Fragment } from "react"
 
 import { CountDown } from "../enhancers"
 import { AddRecordForm } from "../containers"
+
+import { H1, Button, Card, H2, CircularPie } from "../style"
+import ConfettiRain from "./ConfettiRain"
+
 export const TrainingTypes = {
 	CONFIGURING: "CONFIGURING", // Choosing between regular or random exercises order
 	ON_BREAK: "ON_BREAK", // Between exercises
@@ -10,24 +14,28 @@ export const TrainingTypes = {
 }
 
 const Configuring = ({ switchScreen }) => (
-	<div>
-		<button onClick={switchScreen}>Let's get started</button>
-	</div>
+	<Button onClick={switchScreen}>Let's get started</Button>
 )
+
 const Finished = () => (
-	<div>
-		<h1>The end. Congrats</h1>
-	</div>
+	<Fragment>
+		<ConfettiRain />
+		<H1>The end. Congrats</H1>
+	</Fragment>
 )
 
 const Exercising = ({ switchScreen, timing: { perExercise }, exercise }) => (
 	<CountDown start={perExercise} threshold={0} guard={switchScreen}>
 		{({ count, pause, resume, isPaused }) => (
-			<section>
-				<h2>{exercise.name}</h2>
-				<h3>{count} remaining</h3>
-				<button onClick={isPaused ? resume : pause}>Pause</button>
-			</section>
+			<Fragment>
+				<H2>{exercise.name}</H2>
+				<Card>
+					<CircularPie remaining={count} total={perExercise}>
+						{count}s remaining before break
+					</CircularPie>
+					<Button onClick={isPaused ? resume : pause}>Pause</Button>
+				</Card>
+			</Fragment>
 		)}
 	</CountDown>
 )
@@ -41,16 +49,20 @@ const OnBreak = ({
 }) => (
 	<CountDown start={perBreak} threshold={0} guard={switchScreen}>
 		{({ count, pause, resume, isPaused }) => (
-			<section>
-				<h2>
+			<Fragment>
+				<H2>
 					{nextExercise
 						? `Coming next: ${nextExercise.name}`
 						: `Congratulations, you made it !`}
-				</h2>
-				<h3>{count}</h3>
-				<button onClick={isPaused ? resume : pause}>Pause</button>
+				</H2>
+				<Card>
+					<CircularPie remaining={count} total={perBreak}>
+						{count}s remaining before exercise
+					</CircularPie>
+					<Button onClick={isPaused ? resume : pause}>Pause</Button>
+				</Card>
 				<AddRecordForm exerciseId={previousExercise.id} timing={perExercise} />
-			</section>
+			</Fragment>
 		)}
 	</CountDown>
 )

@@ -13,7 +13,7 @@ const Button = styled.button`
 	cursor: pointer;
 
 	&:active {
-		transform: scale(0.95);
+		transform: scale(0.9);
 	}
 	&:hover {
 		box-shadow: ${tm`shadow.md`};

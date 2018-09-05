@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import { ProgramSelectors } from "../../redux/ducks/Program"
 import { ExerciseSelectors } from "../../redux/ducks/Exercise"
 import Training, { TrainingTypes } from "../dumbs/Training"
+import { H1, Section } from "../style"
 
 export class ProgramTraining extends Component {
 	static propTypes = {
@@ -75,15 +76,15 @@ export class ProgramTraining extends Component {
 
 		const Component = Training[currentScreen]
 		return (
-			<section>
-				<h1>{program.name}</h1>
+			<Section>
+				<H1>{program.name}</H1>
 				<Component
 					switchScreen={this.switchScreen}
 					timing={program.timing}
 					exercise={exercise}
 					previousExercise={previousExercise}
 				/>
-			</section>
+			</Section>
 		)
 	}
 }
