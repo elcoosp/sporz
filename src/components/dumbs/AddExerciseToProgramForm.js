@@ -1,6 +1,17 @@
 import React from "react"
+import styled from "styled-components"
 import { withSubmitHandler } from "../enhancers"
+import { Input, Button, Form, P } from "../style"
 
+const S = {
+	Form: styled(Form)`
+		height: 10rem;
+	`,
+	Select: Input.withComponent(styled.select`
+		/* appearance: none;
+		cursor: pointer; */
+	`)
+}
 const AddExerciseToProgramForm = withSubmitHandler({
 	submitProp: (values, props) =>
 		props.addExerciseToProgram({ ...values, id: props.program.id }),
@@ -9,22 +20,24 @@ const AddExerciseToProgramForm = withSubmitHandler({
 		exerciseId: value =>
 			value !== undefined ? "" : "Every exercice is in the program"
 	}
-})(({ handleSubmit, errors, handleChange, exercisesNotInProgram }) => (
-	<form onSubmit={handleSubmit} onChange={handleChange}>
-		<select name="exerciseId">
-			{exercisesNotInProgram.map(({ name, id }) => (
-				<option key={id} value={id}>
-					{name}
-				</option>
-			))}
-		</select>
+})(
+	({ handleSubmit, errors, handleChange, exercisesNotInProgram }) =>
+		exercisesNotInProgram.length === 0 ? (
+			<P>There is no more exercises left to add !</P>
+		) : (
+			<S.Form onSubmit={handleSubmit} onChange={handleChange}>
+				<S.Select name="exerciseId">
+					{exercisesNotInProgram.map(({ name, id }) => (
+						<option key={id} value={id}>
+							{name}
+						</option>
+					))}
+				</S.Select>
+				<Button type="submit" disabled={errors.exerciseId ? true : false}>
+					Add exercise
+				</Button>
+			</S.Form>
+		)
+)
 
-		<button type="submit" disabled={errors.exerciseId ? true : false}>
-			Add exercise
-		</button>
-		{exercisesNotInProgram.length === 0 && (
-			<span>{"Damn, all exercices in a program !"}</span>
-		)}
-	</form>
-))
 export default AddExerciseToProgramForm

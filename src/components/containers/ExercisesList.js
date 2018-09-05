@@ -1,12 +1,11 @@
 import React, { Fragment } from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
-import { Link } from "react-router-dom"
 import { Routes } from "../../constants"
 
 import AddExerciseForm from "./AddExerciseForm"
 import { ExerciseSelectors } from "../../redux/ducks/Exercise"
-import { Card, CardList } from "../style"
+import { Card, CardList, BigLink } from "../style"
 
 const ExercisesList = ({ exercises }) => {
 	return (
@@ -15,9 +14,7 @@ const ExercisesList = ({ exercises }) => {
 			<CardList>
 				{exercises.map(({ id, name }) => (
 					<Card key={id}>
-						<h1>
-							<Link to={Routes.exercises.path + "/" + id}>{name}</Link>
-						</h1>
+						<BigLink to={Routes.exercises.path + "/" + id}>{name}</BigLink>
 					</Card>
 				))}
 			</CardList>

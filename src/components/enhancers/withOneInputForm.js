@@ -1,6 +1,14 @@
 import React from "react"
-import { withSubmitHandler } from "./"
+import styled from "styled-components"
 
+import { withSubmitHandler } from "./"
+import { Input, Button, Form } from "../style"
+
+const S = {
+	Form: styled(Form)`
+		height: 10rem;
+	`
+}
 const withOneInputForm = ({
 	inputType = "text",
 	inputValidator = value => value.trim().length > 0,
@@ -19,12 +27,12 @@ const withOneInputForm = ({
 			[inputName]: value => (inputValidator(value) ? "" : errorMessage)
 		}
 	})(({ handleSubmit, errors, handleChange }) => (
-		<form onSubmit={handleSubmit} onChange={handleChange}>
+		<S.Form onSubmit={handleSubmit} onChange={handleChange}>
 			{label && <label htmlFor={inputName}>{label}</label>}
-			<input type={inputType} name={inputName} />
-			<button type="submit">{buttonLabel}</button>
+			<Input type={inputType} name={inputName} />
+			<Button type="submit">{buttonLabel}</Button>
 			{errors.name && <span>{errors.name}</span>}
-		</form>
+		</S.Form>
 	))
 
 export default withOneInputForm

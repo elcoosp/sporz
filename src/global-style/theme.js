@@ -1,4 +1,4 @@
-import { transparentize, lighten } from "polished"
+import { transparentize, darken } from "polished"
 /*
 pm: primary
 sd: secondary
@@ -6,14 +6,14 @@ sd: secondary
 const color = {
 	white: "#F2F2F7",
 	black: "#080C08",
-	pm: "#247BA0",
-	sd: "#0A2463"
+	pm: "#21D4FD",
+	sd: "#550F75"
 }
 
 const GRADIENT_DIRECTION = "to left bottom"
 
 const makeLinearGradient = color =>
-	`linear-gradient(${GRADIENT_DIRECTION}, ${color}, ${lighten(0.3)(color)})`
+	`linear-gradient(${GRADIENT_DIRECTION}, ${color}, ${darken(0.3)(color)})`
 
 const gradient = {
 	pm: makeLinearGradient(color.pm),
@@ -37,7 +37,8 @@ const spacing = {
 	md: "1.4rem",
 	lg: "1.8rem",
 	xl: "2.6rem",
-	xxl: "3.2rem"
+	xxl: "3.2rem",
+	xxxl: "8rem"
 }
 
 const easing = "ease-in-out"
