@@ -1,15 +1,15 @@
-import React, { Fragment } from "react"
+import React from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
 import { Routes } from "../../constants"
 
 import AddExerciseForm from "./AddExerciseForm"
 import { ExerciseSelectors } from "../../redux/ducks/Exercise"
-import { Card, CardList, BigLink } from "../style"
+import { Card, CardList, BigLink, Section } from "../style"
 
 const ExercisesList = ({ exercises }) => {
 	return (
-		<Fragment>
+		<Section>
 			<AddExerciseForm />
 			<CardList>
 				{exercises.map(({ id, name }) => (
@@ -18,7 +18,7 @@ const ExercisesList = ({ exercises }) => {
 					</Card>
 				))}
 			</CardList>
-		</Fragment>
+		</Section>
 	)
 }
 

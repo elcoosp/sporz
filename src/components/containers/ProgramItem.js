@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import { Routes } from "../../constants"
 import { withRedirectIfNoProp } from "../enhancers"
 import { AddExerciseToProgramForm, TimingForm } from "../dumbs"
+import { Section } from "../style"
 import { ProgramActions, ProgramSelectors } from "../../redux/ducks/Program"
 import { ExerciseSelectors } from "../../redux/ducks/Exercise"
 
@@ -20,7 +21,7 @@ const ProgramItem = withRedirectIfNoProp({
 		addExerciseToProgram,
 		updateTiming
 	}) => (
-		<div>
+		<Section>
 			<h1>{program.name}</h1>
 
 			<button
@@ -48,7 +49,7 @@ const ProgramItem = withRedirectIfNoProp({
 			{exercisesInProgram.map(({ id, name }) => (
 				<li key={id}>{name}</li>
 			))}
-		</div>
+		</Section>
 	)
 )
 

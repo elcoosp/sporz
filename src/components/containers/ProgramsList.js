@@ -1,16 +1,22 @@
-import React, { Fragment } from "react"
+import React from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
-import { Link } from "react-router-dom"
 import { Routes } from "../../constants"
 
 import AddProgramForm from "./AddProgramForm"
 import { ProgramSelectors } from "../../redux/ducks/Program"
-import { Card, CardList, BigLink, P as Paragraph, ButtonLink } from "../style"
+import {
+	Card,
+	CardList,
+	BigLink,
+	P as Paragraph,
+	ButtonLink,
+	Section
+} from "../style"
 
 const ProgramsList = ({ programs }) => {
 	return (
-		<Fragment>
+		<Section>
 			<AddProgramForm />
 
 			<CardList>
@@ -27,7 +33,7 @@ const ProgramsList = ({ programs }) => {
 					</Card>
 				))}
 			</CardList>
-		</Fragment>
+		</Section>
 	)
 }
 
