@@ -8,8 +8,13 @@ const Button = styled.button`
 	background-color: white;
 	box-shadow: ${tm`shadow.sm`};
 	padding: ${tm`spacing.sm`};
+	margin: ${tm`spacing.sm`};
 	transition: ${tm`transition.md`};
 	cursor: pointer;
+
+	&:active {
+		transform: scale(0.95);
+	}
 	&:hover {
 		box-shadow: ${tm`shadow.md`};
 		transition: ${tm`transition.md`};

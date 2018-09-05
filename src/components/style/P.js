@@ -4,7 +4,7 @@ import tm from "themmer"
 const P = styled.p`
 	text-align: center;
 	color: ${tm`color.black`};
-	margin: 0;
+	margin: ${tm`spacing.md`};
 	padding: 0;
 `
 

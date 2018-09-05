@@ -34,7 +34,7 @@ const AddExerciseToProgramForm = withSubmitHandler({
 					))}
 				</S.Select>
 				<Button type="submit" disabled={errors.exerciseId ? true : false}>
-					Add exercise
+					Add this exercise to the program
 				</Button>
 			</S.Form>
 		)

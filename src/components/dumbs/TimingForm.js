@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import P from "prop-types"
 import { pipe, prevDefault } from "../../utils"
+import { Form, H2, Input, Button, Label } from "../style"
 class TimingForm extends Component {
 	static propTypes = {
 		timing: P.shape({
@@ -26,26 +27,26 @@ class TimingForm extends Component {
 	render() {
 		const { perBreak, perExercise } = this.state
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<h2>Configure your timings for this program</h2>
-				<label htmlFor="perBreak">Per break</label>
-				<input
+			<Form onSubmit={this.handleSubmit}>
+				<H2>Configure your timings (in seconds)</H2>
+				<Label htmlFor="perBreak">Per break</Label>
+				<Input
 					type="number"
 					min="0"
 					value={perBreak}
 					onChange={this.handleChange}
 					name="perBreak"
 				/>
-				<label htmlFor="perExercise">Per exercise</label>
-				<input
+				<Label htmlFor="perExercise">Per exercise</Label>
+				<Input
 					type="number"
 					min="0"
 					value={perExercise}
 					onChange={this.handleChange}
 					name="perExercise"
 				/>
-				<button type="submit">Save</button>
-			</form>
+				<Button type="submit">Save</Button>
+			</Form>
 		)
 	}
 }
