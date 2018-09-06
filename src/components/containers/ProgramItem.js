@@ -32,6 +32,7 @@ const ProgramItem = withRedirectIfNoProp({
 		program,
 		removeProgram,
 		exercisesNotInProgram,
+		removeExerciseFromProgram,
 		exercisesInProgram,
 		addExerciseToProgram,
 		updateTiming
@@ -42,21 +43,24 @@ const ProgramItem = withRedirectIfNoProp({
 				<BadgeList
 					title="Not in the program"
 					items={exercisesNotInProgram}
+					noItems="All exercises are in the program"
 					badgeContentProp="name"
 					badgeClickHandler={exercise =>
 						addExerciseToProgram({ exerciseId: exercise.id, id: program.id })
 					}
-				>
-					{exercisesNotInProgram.length === 0 && (
-						<Paragraph>All exercises are in the program</Paragraph>
-					)}
-				</BadgeList>
+				/>
 
 				<BadgeList
 					title="Currently in the program"
 					items={exercisesInProgram}
+					noItems="No exercises in the program"
 					badgeContentProp="name"
-					badgeClickHandler={item => console.log(item)}
+					badgeClickHandler={exercise =>
+						removeExerciseFromProgram({
+							exerciseId: exercise.id,
+							id: program.id
+						})
+					}
 				/>
 			</S.FormListContainer>
 			<TimingForm timing={program.timing} updateTiming={updateTiming} />
@@ -95,7 +99,10 @@ const mapDispatchToProps = (dispatch, { match }) => ({
 	updateTiming: payload =>
 		dispatch(ProgramActions.update({ id: match.params.id, ...payload })),
 	removeProgram: payload => dispatch(ProgramActions.remove(payload)),
-	addExerciseToProgram: payload => dispatch(ProgramActions.addExercise(payload))
+	addExerciseToProgram: payload =>
+		dispatch(ProgramActions.addExercise(payload)),
+	removeExerciseFromProgram: payload =>
+		dispatch(ProgramActions.removeExercise(payload))
 })
 
 export default connect(

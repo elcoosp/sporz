@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { H2, Badge } from "../style"
+import { H2, Badge, P as Paragraph } from "../style"
 const S = {}
 
 S.List = styled.ul`
@@ -17,7 +17,7 @@ const BadgeList = ({
 	badgeContentProp,
 	title,
 	badgeClickHandler,
-	children
+	noItems
 }) => {
 	return (
 		<div>
@@ -28,7 +28,7 @@ const BadgeList = ({
 						{item[badgeContentProp]}
 					</Badge>
 				))}
-				{children}
+				{items.length === 0 && <Paragraph>{noItems}</Paragraph>}
 			</S.List>
 		</div>
 	)

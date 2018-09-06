@@ -32,7 +32,16 @@ const addExercise = ({ id = "", exerciseId = "" }) => ({
 		id
 	}
 })
+
+const removeExercise = ({ id = "", exerciseId = "" }) => ({
+	type: types.REMOVE_EXERCISE,
+	payload: {
+		exerciseId,
+		id
+	}
+})
 export default {
+	removeExercise,
 	addExercise,
 	add,
 	remove,

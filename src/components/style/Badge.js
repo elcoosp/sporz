@@ -2,6 +2,7 @@ import styled from "styled-components"
 import tm from "themmer"
 
 const Badge = styled.div`
+	cursor: pointer;
 	font-size: ${tm`font.size.sm`};
 	padding: ${tm`spacing.sm`};
 	margin: ${tm`spacing.sm`};
