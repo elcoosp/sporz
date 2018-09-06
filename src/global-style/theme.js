@@ -61,10 +61,10 @@ const border = {
 }
 const font = {
 	size: {
-		sm: ".9rem",
+		sm: ".8rem",
 		md: "1.1rem",
-		lg: "1.4rem",
-		xl: "2rem"
+		lg: "1.2rem",
+		xl: "1.8rem"
 	}
 }
 

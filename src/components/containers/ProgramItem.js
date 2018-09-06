@@ -2,13 +2,14 @@ import React from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
+
 import { Routes } from "../../constants"
-import { withRedirectIfNoProp } from "../enhancers"
-import { AddExerciseToProgramForm, TimingForm } from "../dumbs"
-import { Section } from "../style"
 import { ProgramActions, ProgramSelectors } from "../../redux/ducks/Program"
 import { ExerciseSelectors } from "../../redux/ducks/Exercise"
-import { H1, Button, H2, Badge } from "../style"
+
+import { withRedirectIfNoProp } from "../enhancers"
+import { TimingForm, BadgeList } from "../dumbs"
+import { H1, Button, P as Paragraph, Section } from "../style"
 
 const S = {
 	WarningButton: styled(Button)`
@@ -20,17 +21,6 @@ const S = {
 S.FormListContainer = styled.section`
 	display: flex;
 	justify-content: center;
-	flex-wrap: wrap;
-`
-
-S.ListContainer = styled.div``
-
-S.List = styled.ul`
-	list-style: none;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-wrap: wrap;
 `
 
@@ -49,20 +39,25 @@ const ProgramItem = withRedirectIfNoProp({
 		<Section>
 			<H1>{program.name}</H1>
 			<S.FormListContainer>
-				<AddExerciseToProgramForm
-					exercisesNotInProgram={exercisesNotInProgram}
-					addExerciseToProgram={addExerciseToProgram}
-					program={program}
-				/>
+				<BadgeList
+					title="Not in the program"
+					items={exercisesNotInProgram}
+					badgeContentProp="name"
+					badgeClickHandler={exercise =>
+						addExerciseToProgram({ exerciseId: exercise.id, id: program.id })
+					}
+				>
+					{exercisesNotInProgram.length === 0 && (
+						<Paragraph>All exercises are in the program</Paragraph>
+					)}
+				</BadgeList>
 
-				<S.ListContainer>
-					<H2>Currently in the program</H2>
-					<S.List>
-						{exercisesInProgram.map(({ id, name }) => (
-							<Badge key={id}>{name}</Badge>
-						))}
-					</S.List>
-				</S.ListContainer>
+				<BadgeList
+					title="Currently in the program"
+					items={exercisesInProgram}
+					badgeContentProp="name"
+					badgeClickHandler={item => console.log(item)}
+				/>
 			</S.FormListContainer>
 			<TimingForm timing={program.timing} updateTiming={updateTiming} />
 

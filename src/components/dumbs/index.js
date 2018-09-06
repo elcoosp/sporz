@@ -1,4 +1,4 @@
-export { default as AddExerciseToProgramForm } from './AddExerciseToProgramForm.js'
+export { default as BadgeList } from './BadgeList.js'
 export { default as ConfettiRain } from './ConfettiRain.js'
 export { default as Header } from './Header.js'
 export { default as TimingForm } from './TimingForm.js'
