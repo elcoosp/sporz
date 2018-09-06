@@ -8,6 +8,7 @@ const Button = styled.button`
 	background-color: white;
 	box-shadow: ${tm`shadow.sm`};
 	padding: ${tm`spacing.sm`};
+	text-align: center;
 	margin: ${tm`spacing.sm`};
 	transition: ${tm`transition.md`};
 	cursor: pointer;
