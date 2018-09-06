@@ -20,7 +20,7 @@ const Configuring = ({ switchScreen }) => (
 const Finished = () => (
 	<Fragment>
 		<ConfettiRain />
-		<H1>The end. Congrats</H1>
+		<H1>You reached the end of the program. Rest well !</H1>
 	</Fragment>
 )
 

@@ -9,15 +9,9 @@ import { ExerciseSelectors } from "../../redux/ducks/Exercise"
 
 import { withRedirectIfNoProp } from "../enhancers"
 import { TimingForm, BadgeList } from "../dumbs"
-import { H1, Button, P as Paragraph, Section } from "../style"
+import { H1, WarningButton, Section } from "../style"
 
-const S = {
-	WarningButton: styled(Button)`
-		color: red;
-		border: 1px solid red;
-	`
-}
-
+const S = {}
 S.FormListContainer = styled.section`
 	display: flex;
 	justify-content: center;
@@ -65,7 +59,7 @@ const ProgramItem = withRedirectIfNoProp({
 			</S.FormListContainer>
 			<TimingForm timing={program.timing} updateTiming={updateTiming} />
 
-			<S.WarningButton
+			<WarningButton
 				onClick={() =>
 					removeProgram({
 						id: program.id,
@@ -74,7 +68,7 @@ const ProgramItem = withRedirectIfNoProp({
 				}
 			>
 				Remove (warning, we can not go back) !
-			</S.WarningButton>
+			</WarningButton>
 		</Section>
 	)
 )

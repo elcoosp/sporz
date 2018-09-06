@@ -24,7 +24,11 @@ const BadgeList = ({
 			<H2>{title}</H2>
 			<S.List>
 				{items.map(item => (
-					<Badge onClick={() => badgeClickHandler(item)} key={item.id}>
+					<Badge
+						cursorPointer
+						onClick={() => badgeClickHandler(item)}
+						key={item.id}
+					>
 						{item[badgeContentProp]}
 					</Badge>
 				))}

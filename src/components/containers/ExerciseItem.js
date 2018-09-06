@@ -2,9 +2,13 @@ import React from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
 import TimeAgo from "react-timeago"
+
 import { Routes } from "../../constants"
 import { withRedirectIfNoProp } from "../enhancers"
 import { ExerciseActions, ExerciseSelectors } from "../../redux/ducks/Exercise"
+
+import { H1, Section, Badge, WarningButton, ButtonLink } from "../style"
+import { Chart } from "../dumbs"
 const ExerciseItem = withRedirectIfNoProp({
 	prop: "exercise",
 	redirect: Routes.exercises.path
@@ -16,22 +20,26 @@ const ExerciseItem = withRedirectIfNoProp({
 		const lastRecord = records[records.length - 1]
 
 		return (
-			<div>
-				<h1>{name}</h1>
-				{lastRecord && (
-					<p>
-						Last record : <TimeAgo date={lastRecord.timestamp} />
-					</p>
+			<Section>
+				<H1>{name}</H1>
+
+				<Badge>
+					Last record:{" "}
+					{lastRecord ? <TimeAgo date={lastRecord.timestamp} /> : "none"}
+				</Badge>
+				{records.length === 0 ? (
+					<ButtonLink to={Routes.programs.path}>
+						Go training to see your records chart
+					</ButtonLink>
+				) : (
+					<Chart dataKey="repetitions" data={records} />
 				)}
-				<button
+				<WarningButton
 					onClick={() => removeExercise({ id, programsById, recordsById })}
 				>
-					Remove{" "}
-					<span role="img" aria-label="Remove exercise">
-						❌
-					</span>
-				</button>
-			</div>
+					Remove (warning, we can not go back) !
+				</WarningButton>
+			</Section>
 		)
 	}
 )

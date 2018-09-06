@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import tm from "themmer"
 
 const CardList = styled.ul`
 	padding: 0;

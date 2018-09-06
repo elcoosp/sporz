@@ -1,5 +1,15 @@
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import tm from "themmer"
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+`
 
 const Card = styled.li`
 	box-shadow: ${tm`shadow.md`};
@@ -10,12 +20,12 @@ const Card = styled.li`
 	background-color: white;
 	border-radius: ${tm`radii.sm`};
 	flex: 1 auto;
-
+	animation: ${fadeIn} 0.8s ease-in-out;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	min-height: ${tm`spacing.xxxl`};
+	min-height: ${p => (p.small ? tm`spacing.lg` : tm`spacing.xxxl`)};
 
 	&:hover {
 		box-shadow: ${tm`shadow.lg`};
