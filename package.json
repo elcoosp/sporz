@@ -5,6 +5,7 @@
 	"dependencies": {
 		"@material-ui/core": "^3.0.1",
 		"cuid": "^2.1.4",
+		"lodash.throttle": "^4.1.1",
 		"polished": "^2.0.3",
 		"prop-types": "^15.6.2",
 		"react": "^16.4.2",
