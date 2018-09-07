@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 import tm from "themmer"
 const fadeIn = keyframes`
   from {
@@ -12,6 +12,11 @@ const fadeIn = keyframes`
 `
 
 const Card = styled.li`
+${p =>
+	p.cursorPointer &&
+	css`
+		cursor: pointer;
+	`}
 	box-shadow: ${tm`shadow.md`};
 	list-style-type: none;
 	padding: ${tm`spacing.lg`};

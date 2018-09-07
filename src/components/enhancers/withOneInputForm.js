@@ -31,7 +31,7 @@ const withOneInputForm = ({
 			{label && <label htmlFor={inputName}>{label}</label>}
 			<Input type={inputType} name={inputName} />
 			<Button type="submit">{buttonLabel}</Button>
-			{errors.name && <span>{errors.name}</span>}
+			{errors[inputName] && <span>{errors[inputName]}</span>}
 		</S.Form>
 	))
 

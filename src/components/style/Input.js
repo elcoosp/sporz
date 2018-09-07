@@ -6,6 +6,7 @@ const Input = styled.input`
 	border: none;
 	box-shadow: ${tm`shadow.sm`};
 	padding: ${tm`spacing.sm`};
+	font-size: ${tm`font.size.sm`};
 `
 
 export default Input

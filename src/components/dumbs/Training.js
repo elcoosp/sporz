@@ -20,7 +20,11 @@ const Configuring = ({ switchScreen }) => (
 const Finished = () => (
 	<Fragment>
 		<ConfettiRain />
-		<H1>You reached the end of the program. Rest well !</H1>
+		<H1>
+			You reached the end of the program
+			<br />
+			Rest well !
+		</H1>
 	</Fragment>
 )
 
@@ -61,7 +65,11 @@ const OnBreak = ({
 					</CircularPie>
 					<Button onClick={isPaused ? resume : pause}>Pause</Button>
 				</Card>
-				<AddRecordForm exerciseId={previousExercise.id} timing={perExercise} />
+				<AddRecordForm
+					exerciseName={previousExercise.name}
+					exerciseId={previousExercise.id}
+					timing={perExercise}
+				/>
 			</Fragment>
 		)}
 	</CountDown>

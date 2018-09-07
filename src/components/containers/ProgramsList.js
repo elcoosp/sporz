@@ -2,29 +2,36 @@ import React from "react"
 import P from "prop-types"
 import { connect } from "react-redux"
 import { Routes } from "../../constants"
-
+import { withRouter } from "react-router-dom"
 import AddProgramForm from "./AddProgramForm"
 import { ProgramSelectors } from "../../redux/ducks/Program"
 import {
-	Card,
 	CardList,
-	BigLink,
+	H2,
 	P as Paragraph,
 	ButtonLink,
-	Section
+	Section,
+	Card
 } from "../style"
 
-const ProgramsList = ({ programs }) => {
+const ProgramsList = withRouter(({ history, programs }) => {
 	return (
 		<Section>
 			<AddProgramForm />
 
 			<CardList>
 				{programs.map(({ id, name, exercisesById }) => (
-					<Card key={id}>
-						<BigLink to={Routes.programs.path + "/" + id}>{name}</BigLink>
+					<Card
+						cursorPointer
+						onClick={() => history.push(Routes.programs.path + "/" + id)}
+						key={id}
+					>
+						<H2>{name}</H2>
 						{exercisesById.length > 0 ? (
-							<ButtonLink to={Routes.programs.path + "/" + id + "/train"}>
+							<ButtonLink
+								onClick={e => e.stopPropagation()}
+								to={Routes.programs.path + "/" + id + "/train"}
+							>
 								Train now
 							</ButtonLink>
 						) : (
@@ -35,7 +42,7 @@ const ProgramsList = ({ programs }) => {
 			</CardList>
 		</Section>
 	)
-}
+})
 
 ProgramsList.propTypes = {
 	programs: P.arrayOf(

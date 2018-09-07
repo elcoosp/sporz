@@ -37,7 +37,7 @@ const ProgramItem = withRedirectIfNoProp({
 				<BadgeList
 					title="Not in the program"
 					items={exercisesNotInProgram}
-					noItems="All exercises are in the program"
+					noItems="No exercises to add"
 					badgeContentProp="name"
 					badgeClickHandler={exercise =>
 						addExerciseToProgram({ exerciseId: exercise.id, id: program.id })
@@ -45,9 +45,9 @@ const ProgramItem = withRedirectIfNoProp({
 				/>
 
 				<BadgeList
-					title="Currently in the program"
+					title="In the program"
 					items={exercisesInProgram}
-					noItems="No exercises in the program"
+					noItems="No exercises to remove"
 					badgeContentProp="name"
 					badgeClickHandler={exercise =>
 						removeExerciseFromProgram({
@@ -67,7 +67,7 @@ const ProgramItem = withRedirectIfNoProp({
 					})
 				}
 			>
-				Remove (warning, we can not go back) !
+				Remove (can not go back)
 			</WarningButton>
 		</Section>
 	)

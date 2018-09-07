@@ -5,7 +5,7 @@ import { Routes } from "../../constants"
 
 import AddExerciseForm from "./AddExerciseForm"
 import { ExerciseSelectors } from "../../redux/ducks/Exercise"
-import { Card, CardList, BigLink, Section } from "../style"
+import { CardList, H2, Section, CardLink } from "../style"
 
 const ExercisesList = ({ exercises }) => {
 	return (
@@ -13,9 +13,9 @@ const ExercisesList = ({ exercises }) => {
 			<AddExerciseForm />
 			<CardList>
 				{exercises.map(({ id, name }) => (
-					<Card key={id}>
-						<BigLink to={Routes.exercises.path + "/" + id}>{name}</BigLink>
-					</Card>
+					<CardLink key={id} to={Routes.exercises.path + "/" + id}>
+						<H2>{name}</H2>
+					</CardLink>
 				))}
 			</CardList>
 		</Section>

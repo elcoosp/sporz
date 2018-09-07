@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import P from "prop-types"
 import { pipe, prevDefault } from "../../utils"
 import { Form, H2, Input, Button, Label } from "../style"
+import { ToastContainer, toast } from "react-toastify"
+
 class TimingForm extends Component {
 	static propTypes = {
 		timing: P.shape({
@@ -45,7 +47,13 @@ class TimingForm extends Component {
 					onChange={this.handleChange}
 					name="perExercise"
 				/>
-				<Button type="submit">Save</Button>
+				<Button
+					onClick={() => toast("Correctly saved your timing configuration.")}
+					type="submit"
+				>
+					Save
+				</Button>
+				<ToastContainer />
 			</Form>
 		)
 	}

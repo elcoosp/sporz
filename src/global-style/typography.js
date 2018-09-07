@@ -15,11 +15,11 @@ const typography = css`
     `}
 
     ${media.greaterThan("large")`
-      font-size: 22px;
+      font-size: 20px;
     `}
 
     ${media.greaterThan("huge")`
-      font-size: 26px;
+      font-size: 22px;
     `}
 }
   `

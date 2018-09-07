@@ -1,13 +1,14 @@
 import React, { Fragment } from "react"
 import { BrowserRouter as Router, Route } from "react-router-dom"
+import "react-toastify/dist/ReactToastify.css"
 import { ThemeProvider } from "styled-components"
+import styled from "styled-components"
 
 import { Routes } from "../constants"
 import theme from "../global-style/theme"
 import { Programs, Exercises, Home } from "./screens"
 import { Header } from "./dumbs"
 import injectGlobalStyles from "../global-style"
-import styled from "styled-components"
 injectGlobalStyles()
 
 const S = {

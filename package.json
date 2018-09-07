@@ -17,6 +17,7 @@
 		"react-sizeme": "^2.5.2",
 		"react-sweet-progress": "^1.1.2",
 		"react-timeago": "^4.1.9",
+		"react-toastify": "^4.3.0",
 		"recharts": "^1.1.0",
 		"redux": "^4.0.0",
 		"reselect": "^3.0.1",

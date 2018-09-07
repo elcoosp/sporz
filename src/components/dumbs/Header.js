@@ -16,16 +16,15 @@ S.Header = styled.header`
 S.MenuItem = styled(NavLink)`
 	text-decoration: none;
 	padding: ${tm`spacing.md`};
-	color: ${tm`color.white`};
+	color: white;
 	transition: ${tm`transition.lg`};
-	border-bottom: 2px solid transparent;
+	border-bottom: 5px solid transparent;
 	&:hover {
-		border-bottom: 2px solid ${tm`color.white`};
+		border-bottom: 5px solid ${tm`color.white`};
 	}
 	&.${active} {
-		background-image: ${tm`gradient.pm`};
-		padding-left: ${tm`spacing.xl`};
-		padding-right: ${tm`spacing.xl`};
+		border-bottom: 5px solid ${tm`color.pm`};
+
 		transition: ${tm`transition.lg`};
 	}
 `

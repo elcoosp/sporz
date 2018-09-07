@@ -17,7 +17,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 const Chart = ({ data, dataKey }) => (
 	<ResponsiveContainer width="100%" height={300}>
 		<LineChart data={data}>
-			<Line type="monotone" dataKey={dataKey} stroke={theme.color.sd} />
+			<Line type="monotone" dataKey={dataKey} stroke={theme.color.pm} />
 			<Tooltip content={<CustomTooltip />} />
 		</LineChart>
 	</ResponsiveContainer>

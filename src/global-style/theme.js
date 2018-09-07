@@ -6,14 +6,14 @@ sd: secondary
 const color = {
 	white: "#F2F2F7",
 	black: "#080C08",
-	pm: "#21D4FD",
-	sd: "#550F75"
+	pm: "#7E7F9A",
+	sd: "#F3DE8A"
 }
 
 const GRADIENT_DIRECTION = "to left bottom"
 
 const makeLinearGradient = color =>
-	`linear-gradient(${GRADIENT_DIRECTION}, ${color}, ${darken(0.2)(color)})`
+	`linear-gradient(${GRADIENT_DIRECTION}, ${color}, ${darken(0.3)(color)})`
 
 const gradient = {
 	pm: makeLinearGradient(color.pm),
