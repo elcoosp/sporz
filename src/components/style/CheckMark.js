@@ -1,6 +1,5 @@
 import React from "react"
-import theme from "../../global-style/theme"
-const CheckMark = ({ checked } = {}) => {
+const CheckMark = ({ checked }) => {
 	return (
 		<div>
 			<svg

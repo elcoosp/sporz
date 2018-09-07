@@ -5,7 +5,7 @@ const Form = styled.form`
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	min-height: 10rem;
+	min-height: 13rem;
 	padding: ${tm`spacing.md`};
 `
 

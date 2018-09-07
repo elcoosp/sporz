@@ -35,7 +35,7 @@ const ProgramItem = withRedirectIfNoProp({
 			<H1>{program.name}</H1>
 			<S.FormListContainer>
 				<BadgeList
-					title="Not in the program"
+					title="Click to add an exercise"
 					items={exercisesNotInProgram}
 					noItems="No exercises to add"
 					badgeContentProp="name"
@@ -45,7 +45,7 @@ const ProgramItem = withRedirectIfNoProp({
 				/>
 
 				<BadgeList
-					title="In the program"
+					title="Click to remove an exercise"
 					items={exercisesInProgram}
 					noItems="No exercises to remove"
 					badgeContentProp="name"
@@ -67,7 +67,7 @@ const ProgramItem = withRedirectIfNoProp({
 					})
 				}
 			>
-				Remove (can not go back)
+				Remove program
 			</WarningButton>
 		</Section>
 	)

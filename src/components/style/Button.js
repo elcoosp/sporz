@@ -2,6 +2,10 @@ import styled from "styled-components"
 import tm from "themmer"
 
 const Button = styled.button`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	border-radius: 0;
 	border: ${tm`border.sm`};
 	color: ${tm`color.pm`};

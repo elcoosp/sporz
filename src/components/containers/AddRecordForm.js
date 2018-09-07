@@ -8,6 +8,7 @@ import { RecordActions } from "../../redux/ducks/Record"
 import { withOneInputForm } from "../enhancers"
 
 const AddRecordForm = withOneInputForm({
+	label: "Number of repetitions for the previous exercise:",
 	inputName: "repetitions",
 	inputValidator: x => parseInt(x, 10) >= 0,
 	submitHandlerProp: ({ repetitions }, props) => {
@@ -21,7 +22,7 @@ const AddRecordForm = withOneInputForm({
 		})
 	},
 	errorMessage: "I need a repetition count",
-	buttonLabel: "Add a record",
+	buttonLabel: "Add",
 	inputType: "number"
 })
 

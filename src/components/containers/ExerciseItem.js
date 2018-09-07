@@ -37,7 +37,7 @@ const ExerciseItem = withRedirectIfNoProp({
 				<WarningButton
 					onClick={() => removeExercise({ id, programsById, recordsById })}
 				>
-					Remove (can not go back)
+					Remove exercise
 				</WarningButton>
 			</Section>
 		)

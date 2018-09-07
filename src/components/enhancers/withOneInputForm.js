@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import { withSubmitHandler } from "./"
-import { Input, Button, Form } from "../style"
+import { Input, Button, Form, Label } from "../style"
 
 const S = {
 	Form: styled(Form)`
@@ -28,7 +28,7 @@ const withOneInputForm = ({
 		}
 	})(({ handleSubmit, errors, handleChange }) => (
 		<S.Form onSubmit={handleSubmit} onChange={handleChange}>
-			{label && <label htmlFor={inputName}>{label}</label>}
+			{label && <Label htmlFor={inputName}>{label}</Label>}
 			<Input type={inputType} name={inputName} />
 			<Button type="submit">{buttonLabel}</Button>
 			{errors[inputName] && <span>{errors[inputName]}</span>}

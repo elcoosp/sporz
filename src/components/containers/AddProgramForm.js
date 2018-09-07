@@ -5,10 +5,11 @@ import { ProgramActions } from "../../redux/ducks/Program"
 import { withOneInputForm } from "../enhancers"
 
 const AddProgramForm = withOneInputForm({
+	label: "Program name:",
 	inputName: "name",
 	submitHandlerProp: "addProgram",
-	errorMessage: "I need a program name",
-	buttonLabel: "Add a program"
+	errorMessage: "I need a name",
+	buttonLabel: "Add"
 })
 
 AddProgramForm.propTypes = {

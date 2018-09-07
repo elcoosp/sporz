@@ -5,10 +5,11 @@ import { ExerciseActions } from "../../redux/ducks/Exercise"
 import { withOneInputForm } from "../enhancers"
 
 const AddExerciseForm = withOneInputForm({
+	label: "Exercise name:",
 	inputName: "name",
 	submitHandlerProp: "addExercise",
-	errorMessage: "I need an exercise name",
-	buttonLabel: "Add an exercise"
+	errorMessage: "I need a name",
+	buttonLabel: "Add"
 })
 
 AddExerciseForm.propTypes = {

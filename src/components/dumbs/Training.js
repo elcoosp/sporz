@@ -34,10 +34,10 @@ const Exercising = ({ switchScreen, timing: { perExercise }, exercise }) => (
 			<Fragment>
 				<H2>{exercise.name}</H2>
 				<Card>
-					<CircularPie remaining={count} total={perExercise}>
+					<CircularPie color="sd" remaining={count} total={perExercise}>
 						{count}s remaining before break
 					</CircularPie>
-					<Button onClick={isPaused ? resume : pause}>Pause</Button>
+					<Button onClick={isPaused ? resume : pause}>l l</Button>
 				</Card>
 			</Fragment>
 		)}
@@ -59,17 +59,17 @@ const OnBreak = ({
 						? `Coming next: ${nextExercise.name}`
 						: `Congratulations, you made it !`}
 				</H2>
-				<Card>
-					<CircularPie remaining={count} total={perBreak}>
-						{count}s remaining before exercise
-					</CircularPie>
-					<Button onClick={isPaused ? resume : pause}>Pause</Button>
-				</Card>
 				<AddRecordForm
 					exerciseName={previousExercise.name}
 					exerciseId={previousExercise.id}
 					timing={perExercise}
 				/>
+				<Card>
+					<CircularPie remaining={count} total={perBreak}>
+						{count}s remaining before exercise
+					</CircularPie>
+					<Button onClick={isPaused ? resume : pause}>l l</Button>
+				</Card>
 			</Fragment>
 		)}
 	</CountDown>
