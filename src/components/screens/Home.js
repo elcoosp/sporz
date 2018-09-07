@@ -1,7 +1,11 @@
-import React from "react"
-
+import React, { Fragment } from "react"
+import { HomeInstructions } from "../containers"
 const Home = () => {
-	return <div>Home</div>
+	return (
+		<Fragment>
+			<HomeInstructions />
+		</Fragment>
+	)
 }
 
 export default Home

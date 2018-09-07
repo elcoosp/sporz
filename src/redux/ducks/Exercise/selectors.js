@@ -1,10 +1,12 @@
 import { createSelector } from "reselect"
 
-import { makeGetAll, makeGetById } from "../../selector-utils"
+import { makeGetAll, makeGetById, makeHas } from "../../selector-utils"
 import { ProgramSelectors } from "../Program"
 
 const getAll = makeGetAll("exercises")
 const getById = makeGetById("exercises")
+const hasExercises = makeHas("exercises")
+
 const getByIdWithRecords = createSelector(
 	getById,
 	state => state.records,
@@ -46,5 +48,6 @@ export default {
 	getById,
 	getAllNotInProgram,
 	getAllInProgram,
-	getByIdWithRecords
+	getByIdWithRecords,
+	hasExercises
 }
