@@ -8,7 +8,7 @@ const H1 = styled.h1`
 	margin: ${tm`spacing.xl`};
 	font-size: ${tm`font.size.xl`};
 
-	color: ${tm`color.white`};
+	color: white;
 	border-radius: ${tm`radii.lg`};
 `
 

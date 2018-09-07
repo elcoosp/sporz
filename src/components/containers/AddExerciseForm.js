@@ -7,7 +7,7 @@ import { withOneInputForm } from "../enhancers"
 const AddExerciseForm = withOneInputForm({
 	inputName: "name",
 	submitHandlerProp: "addExercise",
-	errorMessage: "I need a name",
+	errorMessage: "I need an exercise name",
 	buttonLabel: "Add an exercise"
 })
 

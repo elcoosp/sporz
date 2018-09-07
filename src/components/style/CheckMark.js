@@ -1,11 +1,11 @@
 import React from "react"
-
-const CheckMark = () => {
+import theme from "../../global-style/theme"
+const CheckMark = ({ checked } = {}) => {
 	return (
 		<div>
 			<svg
-				width="317px"
-				height="231px"
+				width="34px"
+				height="62px"
 				viewBox="0 0 317 231"
 				version="1.1"
 				xmlns="http://www.w3.org/2000/svg"
@@ -16,14 +16,14 @@ const CheckMark = () => {
 				<g
 					id="Page-1"
 					stroke="none"
-					stroke-width="1"
+					strokeWidth="1"
 					fill="none"
-					fill-rule="evenodd"
+					fillRule="evenodd"
 				>
 					<g
 						id="Check"
 						transform="translate(158.455844, 72.136039) rotate(-45.000000) translate(-158.455844, -72.136039) translate(9.955844, -7.863961)"
-						fill="#D8D8D8"
+						fill={checked ? "#228B22" : "#C0C0C0"}
 					>
 						<rect id="Rectangle" x="0" y="0" width="38" height="160" rx="8" />
 						<rect
