@@ -19,12 +19,18 @@ class TimingForm extends Component {
 
 	handleSubmit = pipe(
 		prevDefault,
-		() => this.props.updateTiming({ timing: this.state })
+		() => {
+			toast("Correctly saved your timing configuration.")
+			this.props.updateTiming({ timing: this.state })
+		}
 	)
 
 	handleChange = pipe(
 		prevDefault,
-		e => this.setState({ [e.target.name]: parseInt(e.target.value, 10) })
+		e => {
+			const num = parseInt(e.target.value, 10)
+			this.setState({ [e.target.name]: isNaN(num) || num < 0 ? "" : num })
+		}
 	)
 	render() {
 		const { perBreak, perExercise } = this.state
@@ -47,12 +53,7 @@ class TimingForm extends Component {
 					onChange={this.handleChange}
 					name="perExercise"
 				/>
-				<Button
-					onClick={() => toast("Correctly saved your timing configuration.")}
-					type="submit"
-				>
-					Save
-				</Button>
+				<Button type="submit">Save</Button>
 				<ToastContainer />
 			</Form>
 		)

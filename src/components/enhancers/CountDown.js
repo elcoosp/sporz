@@ -26,7 +26,7 @@ export class CountDown extends React.Component {
 				this.setState(
 					s => ({ ...s, isPaused: false, count: s.count - this.props.offset }),
 					() =>
-						this.state.count <= this.props.threshold &&
+						this.state.count < this.props.threshold &&
 						(this.pause(), this.props.guard())
 				),
 			this.props.interval
